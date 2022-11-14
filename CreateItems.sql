@@ -2,6 +2,7 @@
 CREATE TABLE items
 (item_id               CHAR(8), -- 商品ID
  item_name             VARCHAR(255) NOT NULL, -- 商品名
+ item_image            VARCHAR(255) -- 商品画像
  explanation           TEXT, -- 説明
  unit_price            INT NOT NULL, -- 単価
  genre_id              CHAR(5) NOT NULL, -- ジャンルID
