@@ -6,7 +6,8 @@
         <title></title>
     </head>
     <body>
-        <div class="zouka">test</div>
+        <button class="zouka">a</button>
+        <div class="text">test</div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="./CartUpdate.js"></script>
