@@ -5,9 +5,14 @@ h1{
 label{
     display: inline-block;
     text-align: right;
-    width: 200px;
+    width: 520px;
 }
 .a{
-    width: 300px;
-    height: 30px;
+    width: 430px;
+    height: 39px;
+}
+#btn{
+    display: block;
+    margin: 10 430 0 auto;
+    height: 36px;
 }
