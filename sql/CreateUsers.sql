@@ -1,4 +1,4 @@
---ユーザーテーブル作成--
+-- ユーザーテーブル作成-- 
 CREATE TABLE users
 (user_id      INT AUTO_INCREMENT, -- 会員番号
  user_name    VARCHAR(30) NOT NULL, -- 会員名
