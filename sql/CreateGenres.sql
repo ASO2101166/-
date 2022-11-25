@@ -1,4 +1,4 @@
---ジャンルテーブル作成--
+-- ジャンルテーブル作成-- 
 CREATE TABLE genres
 (genre_code        CHAR(6), -- ジャンルID
  genre_name        VARCHAR(30) NOT NULL, -- ジャンル名
