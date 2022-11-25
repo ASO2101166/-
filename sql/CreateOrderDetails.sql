@@ -5,8 +5,7 @@ CREATE TABLE orderdetails
  item_id                 INT NOT NULL, -- 商品ID
  quantity                INT NOT NULL, -- 数量
  estimated_delivery_date DATE NOT NULL, -- 配送予定日
- PRIMARY KEY (order_id),
- PRIMARY KEY (order_detail_id),
- FOREIGN KEY order_id REFERENCES orders(order_id),
- FOREIGN KEY item_id REFERENCES items(item_id)
+ PRIMARY KEY (order_detail_id, order_id),
+ FOREIGN KEY (order_id) REFERENCES orders(order_id),
+ FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
