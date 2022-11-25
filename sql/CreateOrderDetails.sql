@@ -1,4 +1,4 @@
---注文明細テーブル作成--
+-- 注文明細テーブル作成-- 
 CREATE TABLE orderdetails
 (order_id                CHAR(12), -- 注文番号
  order_detail_id         INT AUTO_INCREMENT NOT NULL, -- 注文明細番号
