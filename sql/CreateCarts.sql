@@ -1,4 +1,4 @@
---カートテーブル作成--
+-- カートテーブル作成-- 
 CREATE TABLE carts
 (cart_id                  INT AUTO_INCREMENT, -- カートID
  user_id                  INT NOT NULL, -- 会員番号
