@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+    color: rgb(33, 183, 228);
+}
+label{
+    display: inline-block;
+    text-align: right;
+    width: 520px;
+}
+.a{
+    width: 430px;
+    height: 39px;
+}
+#btn{
+    display: block;
+    margin: 10 430 0 auto;
+    height: 36px;
+}
