@@ -1,6 +1,6 @@
 --ユーザーテーブル作成--
 CREATE TABLE users
-(user_id      CHAR(8), -- 会員番号
+(user_id      INT AUTO_INCREMENT, -- 会員番号
  user_name    VARCHAR(30) NOT NULL, -- 会員名
  mail_address VARCHAR(255) NOT NULL, -- メールアドレス
  password     VARCHAR(255) NOT NULL, -- パスワード
