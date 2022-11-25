@@ -1,8 +1,8 @@
 --カートテーブル作成--
 CREATE TABLE carts
-(cart_id                  CHAR(8), -- カートID
- user_id                  CHAR(8) NOT NULL, -- 会員番号
- item_id                  CHAR(8) NOT NULL, -- 商品ID
+(cart_id                  INT AUTO_INCREMENT, -- カートID
+ user_id                  INT NOT NULL, -- 会員番号
+ item_id                  INT NOT NULL, -- 商品ID
  quantity                 INT NOT NULL, -- 数量
  registration_status      BOOLEAN NOT NULL, -- 登録情報フラグ
  PRIMARY KEY (user_id)
