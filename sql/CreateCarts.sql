@@ -5,7 +5,7 @@ CREATE TABLE carts
  item_id                  INT NOT NULL, -- 商品ID
  quantity                 INT NOT NULL, -- 数量
  registration_status      BOOLEAN NOT NULL, -- 登録情報フラグ
- PRIMARY KEY (user_id)
- FOREIGN KEY user_id REFERENCES users(user_id)
- FOREIGN KEY item_id REFERENCES items(item_id)
+ PRIMARY KEY (cart_id),
+ FOREIGN KEY (user_id) REFERENCES users(user_id),
+ FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
