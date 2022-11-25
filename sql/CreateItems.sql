@@ -1,4 +1,4 @@
---商品テーブル作成--
+-- 商品テーブル作成-- 
 CREATE TABLE items
 (item_id               INT AUTO_INCREMENT, -- 商品ID
  item_name             VARCHAR(255) NOT NULL, -- 商品名
