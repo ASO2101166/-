@@ -8,5 +8,5 @@ CREATE TABLE items
  genre_code            CHAR(6) NOT NULL, -- ジャンルコード
  set_discount_division CHAR(5), -- セット割引区分
  PRIMARY KEY (item_id),
- FOREIGN KEY genre_id REFERENCES genres(genre_id)
+ FOREIGN KEY genre_code REFERENCES genres(genre_code)
 );
