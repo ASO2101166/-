@@ -844,7 +844,7 @@ header {
 	height: 3px;
 	width: 25px;
 	border-radius: 3px;
-	background: rgb(251, 251, 251);
+	background: rgb(255, 255, 255);
 	transition: 0.5s;
 	position: absolute;
   }
@@ -861,7 +861,7 @@ header {
   
   /* アイコンがクリックされたら真ん中の線を透明にする */
   #drawer_input:checked ~ .drawer_open span {
-	background: rgba(10, 217, 236, 0);
+	background: rgba(255, 255, 255, 0);
   }
   
   /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
@@ -883,7 +883,7 @@ header {
 	top: 0;
 	left: 100%; /* メニューを画面の外に飛ばす */
 	z-index: 99;
-	background: #fff;
+	background: rgb(9, 9, 9);
 	transition: .5s;
   }
   
