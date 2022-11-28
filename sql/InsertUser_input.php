@@ -1,7 +1,7 @@
 <form action="InsertUserTable.php" method="post">
-    <input type="text" name="name">
-    <input type="mail" name="mail">
-    <input type="password" name="password">
-    <input type="text" name="address">
+    名前：<input type="text" name="name"></br>
+    メールアドレス：<input type="mail" name="mail"></br>
+    パスワード：<input type="password" name="password"></br>
+    住所：<input type="text" name="address"></br>
     <input type="submit" value="登録">
 </form>
