@@ -7,5 +7,12 @@
         <title></title>
     </head>
     <body>
+        <?php
+            session_start();
+            require_once 'UserInfo.php';
+            $t = unserialize($_SESSION['user']);
+            echo $t->username;
+        ?>
+        <a href="Logout.php">a</a>
     </body>
 </html>
