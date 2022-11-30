@@ -119,7 +119,7 @@ header a {
 header #logo img {display: block;}
 header #logo {
 	margin: 0;
-	background: linear-gradient(150deg, #960eff, #440078);/*背景グラデーションdegは角度。*/
+	background: linear-gradient(150deg, #b373e4, #a234f7);/*背景グラデーションdegは角度。*/
 	width: 100px;		/*ロゴの幅*/
 	padding: 16px 16px;	/*ロゴ内の余白。ロゴ画像と背景グラデーションの余白です。*/
 	position: absolute;
@@ -493,7 +493,7 @@ ul.slick-dots li.slick-active button {
 .faq dt::before {
 	font-family: "Font Awesome 5 Free";	/*Font Awesomeを使う指定*/
 	content: "\f059";		/*使いたいアイコン名をここで指定。Font Awesomeに記載されています。詳しくは当テンプレートのマニュアルを読んで下さい。*/
-	color: #440078;			/*アイコンの色*/
+	color: #c07af5;			/*アイコンの色*/
 	padding-right: 1em;		/*アイコンとテキストの間の余白*/
 }
 
@@ -525,7 +525,7 @@ p.btn {margin: 0;}
 	display: inline-block;text-decoration: none;border: none;
 	font-size: 1em;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.2);	/*ボックスの影。右へ、下へ、ぼかし幅の順。0,0,0は黒の事で0.2は色が20%出た状態。*/
-	background: linear-gradient(150deg, #960eff, #440078);/*背景グラデーション。#logoと合わせています。*/
+	background: linear-gradient(150deg, #c478fe, #9b38e8);/*背景グラデーション。#logoと合わせています。*/
 	letter-spacing: 0.1em;	/*文字間隔を少し広くする指定*/
 	color: #fff;			/*文字色*/
 	transition: 0.3s;		/*hoverまでにかける時間。0.3秒。*/
@@ -611,7 +611,7 @@ p.btn {margin: 0;}
 /*その他
 ---------------------------------------------------------------------------*/
 .clearfix::after {content: "";display: block;clear: both;}
-.color-theme, .color-theme a {color: #960eff !important;}
+.color-theme, .color-theme a {color: #b57fdf !important;}
 .color-check, .color-check a {color: #f00 !important;}
 .c {text-align: center !important;}
 .ws {width: 95%;display: block;}
@@ -737,7 +737,7 @@ header {
 
 /*bg1設定。サンプルテンプレートでは「サービス」と書いてあるマーク*/
 #new dt span.icon-bg1 {
-	background: #440078;	/*背景色*/
+	background: #b269ea;	/*背景色*/
 }
 
 /*記事(dd)設定*/
