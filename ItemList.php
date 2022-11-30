@@ -10,9 +10,9 @@
         <?php
             session_start();
             require_once 'UserInfo.php';
-            $t = unserialize($_SESSION['user']);
-            echo $t->username;
-            echo $t->user_id;
+            $user = unserialize($_SESSION['user']);
+            echo $user->username;
+            echo $user->user_id;
         ?>
         <a href="Logout.php">a</a>
     </body>

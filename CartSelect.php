@@ -1,8 +1,8 @@
 <?php
-    session_start();
     require_once 'Dbconnect.php';
+    require_once 'UserInfo.php';
     class CartSelect{
-        function cartselect($cart_id){
+        function cartselect(){
             $user = unserialize($_SESSION['user']);
             $cls = new Dbconnect();
             $pdo = $cls->dbConnect();
@@ -11,11 +11,9 @@
             $ps = $pdo->prepare($sql);
             $ps->bindValue(1,$user->user_id,PDO::PARAM_STR);
             $ps->execute();
-            $userData = $ps->fetchAll();
-            foreach($cartData as $row){  
-                
-            }
-            return $carts;
+            $cartData = $ps->fetchAll();
+
+            return $cartData;
         }
     }
 ?>
