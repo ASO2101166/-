@@ -6,9 +6,16 @@
         <title></title>
     </head>
     <body>
-        <button class="zouka">a</button>
-        <div class="text">test</div>
-
+        <div>
+            <button>-</button>
+            <p>商品の個数</p>
+            <button>+</button>
+            <p>商品を削除する</p>
+        </div>
+        <p>商品個数：</p>
+        <p>送料無料まで：</p>
+        <p>獲得ポイント：</p>
+        <button class="">商品の注文手続きへ</button>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="./CartUpdate.js"></script>
     </body>
