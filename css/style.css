@@ -933,3 +933,48 @@ header {
   input:focus {
 	outline:0;
   }
+  .goukei{
+	width:10x;
+    margin: 1em;
+    background-color: #ccc;
+	margin-left: 900px;
+  }
+  .button005 a {
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 220px;
+    padding: 10px 25px;
+    color: #FFF;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: rgb(149,202,252);
+    background: linear-gradient(270deg, rgba(149,202,252,1) 0%, rgba(107,182,255,1) 100%);
+	margin-bottom: 2%;
+}
+.button005 a:hover {
+    background: rgb(117,188,255);
+    background: linear-gradient(270deg, rgba(117,188,255,1) 0%, rgba(62,159,252,1) 100%);
+}
+.button004 a {
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 220px;
+    padding: 10px 25px;
+    color: #FFF;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    background: rgb(149,202,252);
+    background: linear-gradient(270deg, rgb(237, 138, 186) 0%, rgb(244, 116, 188) 100%);
+}
+.button004 a:hover {
+    background: rgb(117,188,255);
+    background: linear-gradient(270deg, rgba(237, 138, 186) 0%, rgba(244, 116, 188) 100%);
+}
