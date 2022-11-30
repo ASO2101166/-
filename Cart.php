@@ -6,6 +6,16 @@
         <title></title>
     </head>
     <body>
+        <?php
+            session_start();
+            require_once 'CartSelect.php';
+            $ClsCartSelect = new CartSelect();
+
+            $cartData = $ClsCartSelect->cartselect();
+            foreach($cartData as $row){
+                echo '<div>'.'</div>';
+            }
+        ?>
         <div>
             <button>-</button>
             <p>商品の個数</p>
