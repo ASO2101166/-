@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>商品詳細画面</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 <meta name="description" content="ここにサイト説明を入れます">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,12 +17,12 @@
 
   <nav id="menubar">
     <ul> 
-    <li><a href="ItemList.html">HOME</a></li>
-    <li><a href="Cart.html">カート</a></li>
-    <li><a href="OrderHistory.html">注文履歴</a></li>
+    <li><a href="ItemList.html">HOME<i class="bi bi-house"></i></a></li>
+    <li><a href="Cart.html">カート<i class="bi bi-cart4"></i></a></li>
+    <li><a href="OrderHistory.html">注文履歴<i class="bi bi-clipboard2-check"></i></a></li>
     </li>
-    <li><a href="faq.html">〇〇さん１０ポイント</a></li>
-    <li><a href="Login.php">ログアウト</a></li>
+    <li><a href="faq.html">〇〇さん１０ポイント<i class="bi bi-p-circle"></i></a></li>
+    <li><a href="Login.php">ログアウト<i class="bi bi-person-slash"></i></a></li>
     </nav>
     
     <!--開閉ボタン（ハンバーガーアイコン）-->
@@ -36,32 +37,39 @@
 <article>
 
 <h2>グローブ</h2>
+<h1><i class="bi bi-currency-yen"></i>1,860</h1>
 
 <p><img src="images/ItemList4.jpg" alt=""></p>
+<h4>～説明～</h4>
+<h2>1,600円のセット購入割</h2>
+<div class="list-container">
 
-<table class="ta1">
-<caption>¥１，８５９</caption>
-<tr>
-<th>見出し</th>
-<td>ここに説明など入れて下さい。サンプルテキスト。</td>
-</tr>
-<tr>
-<th>見出し</th>
-<td>ここに説明など入れて下さい。サンプルテキスト。</td>
-</tr>
-<tr>
-<th>見出し</th>
-<td>ここに説明など入れて下さい。サンプルテキスト。</td>
-</tr>
-<tr>
-<th>見出し</th>
-<td>ここに説明など入れて下さい。サンプルテキスト。</td>
-</tr>
-<tr>
-<th>見出し</th>
-<td>ここに説明など入れて下さい。サンプルテキスト。</td>
-</tr>
-</table>
+  <div class="list blur">
+  <figure><img src="images/ItemList4.jpg" alt=""></figure>
+  <div class="text">
+  <h4>グローブ</h4>
+  <h4><i class="bi bi-currency-yen"></i>1,800</h4>
+  </div>
+  <p class="btn"><a href="Cart.html">カートに入れる</a></p>
+  <span class="new">人気！</span>
+</div>
+
+<div class="lisblu">
+  <figure><img src="images/ItemDetail1.jpg" alt=""></figure>
+</div>
+
+  <div class="list blur">
+  <figure><img src="images/ItemList5.jpg" alt=""></figure>
+  <div class="text">
+  <h4>サポーター</h4>
+  <h4><i class="bi bi-currency-yen"></i>1,600</h4>
+  </div>
+  <p class="btn"><a href="Cart.html">カートに入れる</a></p>
+  </div>
+  </div>
+  <section>
+
+  </section>
 
 <p class="c"><a href="javascript:history.back()">&lt;&lt; 前のページに戻る</a></p>
 
@@ -70,14 +78,6 @@
 </main>
 
 <footer>
-
-<ul id="footermenu">
-<li><a href="#">フッターメニュー</a></li>
-<li><a href="#">フッターメニュー</a></li>
-<li><a href="#">フッターメニュー</a></li>
-<li><a href="#">フッターメニュー</a></li>
-<li><a href="#">フッターメニュー</a></li>
-</ul>
 
 <small>Copyright&copy; <a href="index.html">SAMPLE COMPANY</a> All Rights Reserved.</small>
 <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
