@@ -1,14 +1,16 @@
 <?php
+    session_start();
+    require_once 'UserInfo.php';
     require_once 'Dbconnect.php';
-    class CartCreate{
-        function cartcreate($user_id, $item_id){
-            $cls = new Dbconnect();
-            $pdo = $cls->dbConnect();
-            $sql = "INSERT INTO carts(user_id, item_id, quantity, registration_status) VALUES (?, ?, 1, true)";
-            $ps = $pdo->prepare($sql);
-            $ps->bindValue(1,$user_id,PDO::PARAM_INT);
-            $ps->bindValue(2,$item_id,PDO::PARAM_INT);
-            $ps->execute();
-        }
-    }
+    $user = unserialize($_SESSION['user']);
+
+    $cls = new Dbconnect();
+    $pdo = $cls->dbConnect();
+    $sql = "INSERT INTO carts(user_id, item_id, quantity, registration_status) VALUES (?, ?, 1, true)";
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1,$user->user_id,PDO::PARAM_INT);
+    $ps->bindValue(2,$_POST['item_id'],PDO::PARAM_INT);
+    $ps->execute();
+
+    header('Location: ../Cart.html');
 ?>

@@ -90,6 +90,9 @@
                 <h4><?php echo $row['item_name'];?></h4>
                 <p><?php echo $row['explanation'];?></p>
               </div>
+              <form aciton="Cart.html" method="post">
+                <input type="hidden" name="item_id" value="<?php echo $row['item_id']?>">
+              </form>
               <p class="btn"><a href="Cart.html">カートに入れる</a></p>
               <form action="ItemDetail.html" method="post">
                 <p class="btn"><input type="submit" value="詳しく見る"></p>
