@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <meta name="description" content="ここにサイト説明を入れます">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/genre.css">
+
+  <?php
+    require_once 'php/ItemSelect.php';
+    require_once 'php/GenreSelect.php';
+    
+  ?>
 </head>
 
 <body class="home">
@@ -24,9 +31,31 @@
           <label for="drawer_input" class="drawer_open"><span></span></label>   
           <!-- メニュー -->
           <nav class="nav_content">
-              <li class="nav_item"><a href="">野球</a></li>
-              <li class="nav_item"><a href="">サッカー</a></li>
-              <li class="nav_item"><a href="">卓球</a></li>
+            <div style="position:relative;">
+              <img src="images/屋外スポーツ.png" style="width:100%;height:200px;"></img>
+              <p class="text-center">Out door</p>
+            </div> 
+            <div style="position:relative;">
+              <img src="images/屋内スポーツ.png" style="width:100%;height:200px;"></img>
+              <p class="text-center">In door</p>
+            </div> 
+            <ui>
+              <?php
+                $ClsGenreSelect = new GenreSelect();
+                $genrelevel1 = $ClsGenreSelect->genreselectlevel1();
+                foreach($genrelevel1 as $level1){
+
+                
+              ?>
+              <li class="nav_item"><?php echo $level1['genre_name'];?></li>
+              <?php
+                }
+              ?>
+            </ui>
+            <li class="nav_item"><a href="">野球</a></li>
+            <li class="nav_item"><a href="">野球</a></li>
+            <li class="nav_item"><a href="">サッカー</a></li>
+            <li class="nav_item"><a href="">卓球</a></li>
           </nav>
         </div>
       </h1>
@@ -50,7 +79,34 @@
           <h2>Topics<i class="bi bi-emoji-sunglasses"></i></h2>
 
           <div class="list-container">
-
+            <?php
+              $ClsItemSelect = new ItemSelect();
+              $itemData = $ClsItemSelect->itemselect();
+              foreach($itemData as $row){
+            ?>
+            <div class="list blur">
+              <figure><img src="images/<?php echo $row['item_image']?>" alt=""></figure>
+              <div class="text">
+                <h4><?php echo $row['item_name'];?></h4>
+                <p><?php echo $row['explanation'];?></p>
+              </div>
+              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
+              <form action="ItemDetail.html" method="post">
+                <p class="btn"><input type="submit" value="詳しく見る"></p>
+                <input type="hidden" name="item[item_id]" value="<?php echo $row['item_id']?>">
+                <input type="hidden" name="item[item_name]" value="<?php echo $row['item_name']?>">
+                <input type="hidden" name="item[item_image]" value="<?php echo $row['item_image']?>">
+                <input type="hidden" name="item[explanation]" value="<?php echo $row['explanation']?>">
+                <input type="hidden" name="item[unit_price]" value="<?php echo $row['unit_price']?>">
+                <input type="hidden" name="item[genre_code]" value="<?php echo $row['genre_code']?>">
+                <input type="hidden" name="item[set_discount_division]" value="<?php echo $row['set_discount_division']?>">
+              </form>
+              <!-- <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p> -->
+              <span class="new">NEW</span>
+            </div>
+            <?php
+              }
+            ?>
             <div class="list blur">
               <figure><img src="images/ItemList4.jpg" alt=""></figure>
               <div class="text">
@@ -97,7 +153,7 @@
 
     </main>
 
-
+    <!-- フッター部分 -->
     <footer>
       <?php include('template/Footer.html');?>
     </footer>
