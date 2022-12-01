@@ -16,7 +16,7 @@
     <body>
         <?php
             foreach($cartData as $row){
-                echo '<div>'.'</div>';
+                echo '<div>'..'</div>';
             }
         ?>
         <div>
