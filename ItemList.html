@@ -1,146 +1,126 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>商品一覧画面</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-<meta name="description" content="ここにサイト説明を入れます">
-<link rel="stylesheet" href="css/style.css"></head>
+  <meta charset="UTF-8">
+  <title>商品一覧画面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <meta name="description" content="ここにサイト説明を入れます">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
 <body class="home">
 
-<div id="container">
+  <div id="container">
 
-<header>
+    <!-- ヘッダー部分 -->
+    <header>
+      <h1 id="logo"><a href="ItemList.html" class="menu"></a>
+          <!-- ハンバーガーメニュー部分 -->
+        <div class="nav">  
+          <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+          <input id="drawer_input" class="drawer_hidden" type="checkbox">  
+          <!-- ハンバーガーアイコン -->
+          <label for="drawer_input" class="drawer_open"><span></span></label>   
+          <!-- メニュー -->
+          <nav class="nav_content">
+              <li class="nav_item"><a href="">野球</a></li>
+              <li class="nav_item"><a href="">サッカー</a></li>
+              <li class="nav_item"><a href="">卓球</a></li>
+          </nav>
+        </div>
+      </h1>
+      <?php include('template/Header.html');?>
+    </header>
 
-  <h1 id="logo"><a href="ItemList.html" class="menu"></a>
-      <!-- ハンバーガーメニュー部分 -->
-      <div class="nav">  
-        <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
-        <input id="drawer_input" class="drawer_hidden" type="checkbox">  
-        <!-- ハンバーガーアイコン -->
-        <label for="drawer_input" class="drawer_open"><span></span></label>   
-        <!-- メニュー -->
-        <nav class="nav_content">
-            <li class="nav_item"><a href="">野球</a></li>
-            <li class="nav_item"><a href="">サッカー</a></li>
-            <li class="nav_item"><a href="">卓球</a></li>
-          </ul>
-        </nav>
-   
+
+    <!--スライドショー（slick）-->
+    <div class="mainimg">
+      <div><img src="images/ItemList1.jpg" alt=""></div>
+      <div><img src="images/ItemList2.jpg" alt=""></div>
+      <div><img src="images/ItemList3.jpg" alt=""></div>
+    </div>
+
+    <main>
+
+      <div class="bg1">
+
+        <section>
+
+          <h2>Topics<i class="bi bi-emoji-sunglasses"></i></h2>
+
+          <div class="list-container">
+
+            <div class="list blur">
+              <figure><img src="images/ItemList4.jpg" alt=""></figure>
+              <div class="text">
+                <h4>グローブ</h4>
+                <p>ここに説明を入れます。サンプルテキスト。</p>
+              </div>
+              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
+              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
+              <span class="new">NEW</span>
+            </div>
+
+            <div class="list blur">
+              <figure><img src="images/ItemList5.jpg" alt=""></figure>
+              <div class="text">
+                <h4>サポーター</h4>
+                <p>ここに説明を入れます。サンプルテキスト。</p>
+              </div>
+              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
+              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
+            </div>
+
+            <div class="list blur">
+              <figure><img src="images/ItemList6.jpg" alt=""></figure>
+              <div class="text">
+                <h4>スパイク</h4>
+                <p>ここに説明を入れます。サンプルテキスト。</p>
+              </div>
+              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
+              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
+            </div>
+
+          </div>
+          <!--/.list-container-->
+
+          <p class="btn mt30"><a href="ItemList.html" class="ws">もっとみる<i class="bi bi-hand-index"></i></a></p>
+
+        </section>
+
       </div>
-      </a></h1>
+
+      <section>
+
+      </section>
+
+    </main>
 
 
-<!--メニュー-->
-<nav id="menubar">
-<ul> 
-<li><a href="ItemList.html">HOME<i class="bi bi-house"></i></a></li>
-<li><a href="Cart.html">カート<i class="bi bi-cart4"></i></a></li>
-<li><a href="OrderHistory.html">注文履歴<i class="bi bi-clipboard2-check"></i></a></li>
-</li>
-<li><a href="faq.html">〇〇さん１０ポイント<i class="bi bi-p-circle"></i></a></li>
-<li><a href="Login.php">ログアウト<i class="bi bi-person-slash"></i></a></li>
-</nav>
+    <footer>
+      <?php include('template/Footer.html');?>
+    </footer>
 
-<!--開閉ボタン（ハンバーガーアイコン）-->
-<div id="menubar_hdr">
-<span></span><span></span><span></span>
-</div>
+    <!--ページの上部へ戻るボタン-->
+    <div class="pagetop"><a href="#"><i class="fas fa-angle-double-up"></i></a></div>
 
-</header>
+  </div>
+  <!--/#container-->
 
+  <!--jQueryの読み込み-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<!--スライドショー（slick）-->
-<div class="mainimg">
-<div><img src="images/ItemList1.jpg" alt=""></div>
-<div><img src="images/ItemList2.jpg" alt=""></div>
-<div><img src="images/ItemList3.jpg" alt=""></div>
-</div>
+  <!--パララックス（inview）-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+  <script src="js/jquery.inview_set.js"></script>
 
-<main>
+  <!--このテンプレート専用のスクリプト-->
+  <script src="js/main.js"></script>
 
-<div class="bg1">
-
-<section>
-
-<h2>Topics<i class="bi bi-emoji-sunglasses"></i></h2>
-
-<div class="list-container">
-
-<div class="list blur">
-<figure><img src="images/ItemList4.jpg" alt=""></figure>
-<div class="text">
-<h4>グローブ</h4>
-<p>ここに説明を入れます。サンプルテキスト。</p>
-</div>
-<p class="btn"><a href="Cart.html">カートに入れる</a></p>
-<p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-<span class="new">NEW</span>
-</div>
-
-<div class="list blur">
-<figure><img src="images/ItemList5.jpg" alt=""></figure>
-<div class="text">
-<h4>サポーター</h4>
-<p>ここに説明を入れます。サンプルテキスト。</p>
-</div>
-<p class="btn"><a href="Cart.html">カートに入れる</a></p>
-<p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-</div>
-
-<div class="list blur">
-<figure><img src="images/ItemList6.jpg" alt=""></figure>
-<div class="text">
-<h4>スパイク</h4>
-<p>ここに説明を入れます。サンプルテキスト。</p>
-</div>
-<p class="btn"><a href="Cart.html">カートに入れる</a></p>
-<p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-</div>
-
-</div>
-<!--/.list-container-->
-
-<p class="btn mt30"><a href="ItemList.html" class="ws">もっとみる<i class="bi bi-hand-index"></i></a></p>
-
-</section>
-
-</div>
-
-<section>
-
-</section>
-
-</main>
-
-<footer>
-
-<small>Copyright&copy; <a href="index.html">SAMPLE COMPANY</a> All Rights Reserved.</small>
-<span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
-
-</footer>
-
-</div>
-<!--/#container-->
-
-<!--jQueryの読み込み-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!--パララックス（inview）-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
-<script src="js/jquery.inview_set.js"></script>
-
-<!--このテンプレート専用のスクリプト-->
-<script src="js/main.js"></script>
-
-<!--ページの上部へ戻るボタン-->
-<div class="pagetop"><a href="#"><i class="fas fa-angle-double-up"></i></a></div>
-
-<!--スライドショー（slick）-->
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="js/slick.js"></script>
+  <!--スライドショー（slick）-->
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="js/slick.js"></script>
 
 </body>
 </html>
