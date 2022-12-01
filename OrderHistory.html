@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    require_once 'CartSelect.php';
+    $ClsCartSelect = new CartSelect();
+
+    $cartData = $ClsCartSelect->cartselect();
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -7,11 +15,6 @@
     </head>
     <body>
         <?php
-            session_start();
-            require_once 'CartSelect.php';
-            $ClsCartSelect = new CartSelect();
-
-            $cartData = $ClsCartSelect->cartselect();
             foreach($cartData as $row){
                 echo '<div>'.'</div>';
             }
