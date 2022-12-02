@@ -39,7 +39,7 @@ html,body {
 body {
 	font-family: 'BIZ UDPGothic', "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
 	-webkit-text-size-adjust: none;
-	background: #fff;	/*背景色*/
+	background: rgb(255, 255, 255);	/*背景色*/
 	color: #555;		/*全体の文字色*/
 	line-height: 2;		/*行間*/
 	overflow-x: hidden;
@@ -105,7 +105,7 @@ header {
 	display: flex;				/*flexボックスを使う指定*/
 	align-items: center;		/*垂直揃えの指定。上下中央に配置されるように。*/
 	justify-content: flex-end;	/*並びかたの種類の指定*/
-	background: #111;			/*背景色*/
+	background: linear-gradient(150deg, #59f2e8, #53c4ed);;			/*背景色*/
 	color: #fff;				/*文字色*/
 	position: relative; z-index: 1;
 }
@@ -119,7 +119,7 @@ header a {
 header #logo img {display: block;}
 header #logo {
 	margin: 0;
-	background: linear-gradient(150deg, #b373e4, #a234f7);/*背景グラデーションdegは角度。*/
+	background: linear-gradient(150deg, #6eb6d9, #6267f5);/*背景グラデーションdegは角度。*/
 	width: 100px;		/*ロゴの幅*/
 	padding: 16px 16px;	/*ロゴ内の余白。ロゴ画像と背景グラデーションの余白です。*/
 	position: absolute;
@@ -285,7 +285,7 @@ main h2 .uline {
 main h2 .uline::before {
 	content: "";position: absolute;bottom: 0px;left: 0px;width: 100%;
 	height: 3px;	/*ラインの高さ。上の「border-bottom」と「bottom」の３ヶ所の数字部分を合わせる*/
-	background: #960eff;		/*アニメーション時のラインの色*/
+	background: #e03232;		/*アニメーション時のラインの色*/
 	transition: 1s 0.5s;		/*1sはアニメーションの実行時間は1秒。0.5秒遅れてスタートする指定。*/
 	transform: scaleX(0);		/*幅。最初は0にして見えなくしておく。*/
 	transform-origin: left top;	/*線の出現起点が左からになるように。中央からの出現がよければこの１行削除。*/
@@ -525,7 +525,7 @@ p.btn {margin: 0;}
 	display: inline-block;text-decoration: none;border: none;
 	font-size: 1em;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.2);	/*ボックスの影。右へ、下へ、ぼかし幅の順。0,0,0は黒の事で0.2は色が20%出た状態。*/
-	background: linear-gradient(150deg, #c478fe, #9b38e8);/*背景グラデーション。#logoと合わせています。*/
+	background: linear-gradient(150deg, #86f0b9, #32c5ff);/*背景グラデーション。#logoと合わせています。*/
 	letter-spacing: 0.1em;	/*文字間隔を少し広くする指定*/
 	color: #fff;			/*文字色*/
 	transition: 0.3s;		/*hoverまでにかける時間。0.3秒。*/
