@@ -1,16 +1,16 @@
 <?php
-    session_start();
     require_once 'Dbconnect.php';
     require_once 'UserInfo.php';
     class CartSelect{
-        $user = unserialize($_SESSION['user']);
-        $cls = new Dbconnect();
-        $pdo = $cls->dbConnect();
-        function cartselect(){
-            $sql = "SELECT * FROM carts AS c INNER JOIN items AS i
-                    INNER JOIN users AS u WHERE u.user_id = ?;";
+
+        function cartselect($user_id){
+            $cls = new Dbconnect();
+            $pdo = $cls->dbConnect();
+            $sql = "SELECT * FROM carts AS c LEFT OUTER JOIN items AS i 
+                             ON c.item_id = i.item_id 
+                    WHERE c.user_id = ? AND registration_status = true";
             $ps = $pdo->prepare($sql);
-            $ps->bindValue(1,$user->user_id,PDO::PARAM_STR);
+            $ps->bindValue(1,$user_id,PDO::PARAM_STR);
             $ps->execute();
             $cartData = $ps->fetchAll();
 
@@ -18,7 +18,22 @@
         }
 
         function getUserItemId(){
-            
+            $cls = new Dbconnect();
+            $pdo = $cls->dbConnect();
+            $sql = "SELECT * FROM carts;";
+            $iddata = $pdo->query($sql);
+            return $iddata;
+        }
+
+        function getQuantity($cart_id){
+            $cls = new Dbconnect();
+            $pdo = $cls->dbConnect();
+            $sql = "SELECT quantity FROM carts WHERE cart_id = ?;";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1,$cart_id,PDO::PARAM_STR);
+            $ps->execute();
+            $quantity = $ps->fetchAll();
+            return $quantity;
         }
     }
 ?>
