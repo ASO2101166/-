@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <?php
-        
+        require_once 'php/CartSelect.php';
     ?>
 </head>
 
@@ -31,10 +31,39 @@
                     <h2><i class="bi bi-box-seam"></i> カート内の商品 <i class="bi bi-box-seam"></i></h2>
                     <div class="list-container">
                         <?php
-
-                            // foreach(){
-
-                            // }
+                            $ClsCartSelect = new CartSelect();
+                            $cartdatas = $ClsCartSelect->cartselect($user->user_id);
+                            foreach($cartdatas as $cartdata){
+                                
+                        ?>
+                        <div class="list blur">
+                            <figure><img src="images/<?php echo $cartdata['item_image'];?>" alt=""></figure>
+                            <div class="text">
+                                <h4><?php echo $cartdata['item_name'];?></h4>
+                                <p>配送予定日：</p>
+                                <div class="quantity">
+                                    <button class="minus-btn" type="button" name="button">
+                                        <img src="minus.svg" alt="" />
+                                    </button>
+                                    <!-- データを渡すためのdivタグ（引数がよかったけどわからない） -->
+                                    <div class="hiki" style="display:none;">hiki</div>
+                                    <div class="tasi" style="display:none;">tasi</div>
+                                    <div class="cart_id" style="display:none;"><?php echo $cartdata['cart_id'];?></div>
+                                    <!-- ---------------------------------------------------- -->
+                                    <div class="cartkosuu"><?php echo $cartdata['quantity'];?></div>
+                                    <button class="plus-btn" type="button" name="button">
+                                        <img src="plus.svg" alt="" />
+                                    </button>
+                                </div>
+                                <h1><i class="bi bi-currency-yen"></i><?php echo $cartdata['unit_price'];?></h1>
+                                <form action="php/CartDelete.php" method="post">
+                                    <input type="hidden" name="cart_id" value="<?php echo $cartdata['cart_id'];?>">
+                                    <input type="submit" value="商品を削除する">
+                                </form>
+                            </div>
+                        </div>
+                        <?php
+                            }
                         ?>
                         <div class="list blur">
                             <figure><img src="images/ItemList4.jpg" alt=""></figure>
@@ -105,40 +134,40 @@
                         </div>
 
                         <script type="text/javascript">
-                            $('.minus-btn').on('click', function(e) {
-                                e.preventDefault();
-                                var $this = $(this);
-                                var $input = $this.closest('div').find('input');
-                                var value = parseInt($input.val());
+                            // $('.minus-btn').on('click', function(e) {
+                            //     e.preventDefault();
+                            //     var $this = $(this);
+                            //     var $input = $this.closest('div').find('input');
+                            //     var value = parseInt($input.val());
                     
-                                if (value > 1) {
-                                    value = value - 1;
-                                } else {
-                                    value = 0;
-                                }
+                            //     if (value > 1) {
+                            //         value = value - 1;
+                            //     } else {
+                            //         value = 0;
+                            //     }
                     
-                                $input.val(value);
+                            //     $input.val(value);
                     
-                            });
+                            // });
                     
-                            $('.plus-btn').on('click', function(e) {
-                                e.preventDefault();
-                                var $this = $(this);
-                                var $input = $this.closest('div').find('input');
-                                var value = parseInt($input.val());
+                            // $('.plus-btn').on('click', function(e) {
+                            //     e.preventDefault();
+                            //     var $this = $(this);
+                            //     var $input = $this.closest('div').find('input');
+                            //     var value = parseInt($input.val());
                     
-                                if (value < 100) {
-                                    value = value + 1;
-                                } else {
-                                    value =100;
-                                }
+                            //     if (value < 100) {
+                            //         value = value + 1;
+                            //     } else {
+                            //         value =100;
+                            //     }
                     
-                                $input.val(value);
-                            });
+                            //     $input.val(value);
+                            // });
                     
-                            $('.like-btn').on('click', function() {
-                                $(this).toggleClass('is-active');
-                            });
+                            // $('.like-btn').on('click', function() {
+                            //     $(this).toggleClass('is-active');
+                            // });
                         </script>
 
                     </div>
@@ -179,6 +208,9 @@
     <!--スライドショー（slick）-->
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="js/slick.js"></script>
+
+    <!-- カート個数増加・減少処理 -->
+    <script src="js/CartUpdate.js"></script>
 
 </body>
 </html>
