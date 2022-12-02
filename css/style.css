@@ -891,7 +891,7 @@ header {
   .nav_list {
 	list-style: none;
   }
-  
+
   /* アイコンがクリックされたらメニューを表示 */
   #drawer_input:checked ~ .nav_content {
 	left: 0;/* メニューを画面に入れる */
