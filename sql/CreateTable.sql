@@ -43,7 +43,7 @@ CREATE TABLE carts
 );
 -- 注文テーブル作成-- 
 CREATE TABLE orders
-(order_id    CHAR(12), -- 注文番号 
+(order_id    INT AUTO_INCREMENT, -- 注文番号 
  user_id     INT NOT NULL, -- 会員番号
  total_price INT NOT NULL, -- 合計金額
  PRIMARY KEY (order_id),
@@ -51,8 +51,8 @@ CREATE TABLE orders
 );
 -- 注文明細テーブル作成-- 
 CREATE TABLE orderdetails
-(order_id                CHAR(12), -- 注文番号
- order_detail_id         INT AUTO_INCREMENT NOT NULL, -- 注文明細番号
+(order_id                INT, -- 注文番号
+ order_detail_id         INT NOT NULL, -- 注文明細番号
  item_id                 INT NOT NULL, -- 商品ID
  quantity                INT NOT NULL, -- 数量
  estimated_delivery_date DATE NOT NULL, -- 配送予定日
