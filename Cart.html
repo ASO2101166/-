@@ -33,6 +33,7 @@
                         <?php
                             $ClsCartSelect = new CartSelect();
                             $cartdatas = $ClsCartSelect->cartselect($user->user_id);
+                            $count = 0;
                             foreach($cartdatas as $cartdata){
                                 
                         ?>
@@ -42,16 +43,13 @@
                                 <h4><?php echo $cartdata['item_name'];?></h4>
                                 <p>配送予定日：</p>
                                 <div class="quantity">
-                                    <button class="minus-btn" type="button" name="button">
+                                    <button class="minus-btn" type="button" name="button" 
+                                            onclick="genshou(event,<?php echo $cartdata['cart_id'];?>,'hiki')">
                                         <img src="minus.svg" alt="" />
                                     </button>
-                                    <!-- データを渡すためのdivタグ（引数がよかったけどわからない） -->
-                                    <div class="hiki" style="display:none;">hiki</div>
-                                    <div class="tasi" style="display:none;">tasi</div>
-                                    <div class="cart_id" style="display:none;"><?php echo $cartdata['cart_id'];?></div>
-                                    <!-- ---------------------------------------------------- -->
-                                    <div class="cartkosuu"><?php echo $cartdata['quantity'];?></div>
-                                    <button class="plus-btn" type="button" name="button">
+                                    <span class="cartkosuu"><?php echo $cartdata['quantity'];?></span>
+                                    <button class="plus-btn" type="button" name="button" 
+                                            onclick="zouka(event,<?php echo $cartdata['cart_id'];?>,'tasi')">
                                         <img src="plus.svg" alt="" />
                                     </button>
                                 </div>
@@ -62,117 +60,33 @@
                                 </form>
                             </div>
                         </div>
+                        <!-- Order.html に送るフォームの内容 -->
+                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][cart_id]" value="<?php echo $cartdata['cart_id']?>">
+                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_image]" value="<?php echo $cartdata['item_image']?>">
+                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_name]" value="<?php echo $cartdata['item_name']?>">
+                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][quantity]" value="<?php echo $cartdata['quantity']?>">
+                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][unit_price]" value="<?php echo $cartdata['unit_price']?>">
+                        <!-- ----------------------------- -->
                         <?php
+                                $count++;
                             }
                         ?>
-                        <div class="list blur">
-                            <figure><img src="images/ItemList4.jpg" alt=""></figure>
-                            <div class="text">
-                                <h4>グローブ</h4>
-                                <p>配送予定日：</p>
-                                <div class="quantity">
-                                    <button class="minus-btn" type="button" name="button">
-                                        <img src="minus.svg" alt="" />
-                                    </button>
-                                    <input type="text" name="name" value="1">
-                                    <button class="plus-btn" type="button" name="button">
-                                        <img src="plus.svg" alt="" />
-                                    </button>
-                                </div>
-                                <h1><i class="bi bi-currency-yen"></i>1,860</h1>
-                                <p>
-                                    <a href="Cart.html">商品を削除する</a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="list blur">
-                            <figure><img src="images/ItemList5.jpg" alt=""></figure>
-                            <div class="text">
-                                <h4>サポーター</h4>
-                                <p>配送予定日：</p>
-                                <div class="quantity">
-                                    <button class="minus-btn" type="button" name="button">
-                                        <img src="minus.svg" alt="" />
-                                    </button>
-                                    <input type="text" name="name" value="1">
-                                    <button class="plus-btn" type="button" name="button">
-                                        <img src="plus.svg" alt="" />
-                                    </button>
-                                </div>
-                                <h1><i class="bi bi-currency-yen"></i>1,600</h1>
-                                <p>
-                                    <a href="Cart.html">商品を削除する</a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="list blur">
-                            <figure><img src="images/ItemList6.jpg" alt=""></figure>
-                            <div class="text">
-                                <h4>スパイク</h4>
-                                <p>配送予定日：</p>
-                                <div class="quantity">
-                                    <button class="minus-btn" type="button" name="button">
-                                        <img src="minus.svg" alt="" />
-                                    </button>
-                                    <input type="text" name="name" value="1">
-                                    <button class="plus-btn" type="button" name="button">
-                                        <img src="plus.svg" alt="" />
-                                    </button>
-                                </div>
-                                <h1><i class="bi bi-currency-yen"></i>5,400</h1>
-                                <p>
-                                    <a href="Cart.html">商品を削除する</a>
-                                </p>
-                            </div>
-                        </div>
                         <div>
-                            <h2>商品の個数：</h2>
+                            <h2>商品の個数：<?php echo $count;?>点</h2>
                             <h2>無料配送まで：</h2>
                             <h2>獲得ポイント：</h2>
                         </div>
 
-                        <script type="text/javascript">
-                            // $('.minus-btn').on('click', function(e) {
-                            //     e.preventDefault();
-                            //     var $this = $(this);
-                            //     var $input = $this.closest('div').find('input');
-                            //     var value = parseInt($input.val());
-                    
-                            //     if (value > 1) {
-                            //         value = value - 1;
-                            //     } else {
-                            //         value = 0;
-                            //     }
-                    
-                            //     $input.val(value);
-                    
-                            // });
-                    
-                            // $('.plus-btn').on('click', function(e) {
-                            //     e.preventDefault();
-                            //     var $this = $(this);
-                            //     var $input = $this.closest('div').find('input');
-                            //     var value = parseInt($input.val());
-                    
-                            //     if (value < 100) {
-                            //         value = value + 1;
-                            //     } else {
-                            //         value =100;
-                            //     }
-                    
-                            //     $input.val(value);
-                            // });
-                    
-                            // $('.like-btn').on('click', function() {
-                            //     $(this).toggleClass('is-active');
-                            // });
-                        </script>
+                        
 
                     </div>
                     <!--/.list-container-->
 
+                    <!-- Order.html に送るフォーム -->
+                    <form action="Order.html" id="OrderForm" method="post">
+                        <p class="btn mt30"><input type="submit" value="商品の注文手続きへ"class="ws"><i class="bi bi-hand-index-thumb"></i></p>
+                    </form>
+                    <!-- -----------------------^ -->
                     <p class="btn mt30"><a href="Order.html" class="ws">商品の注文手続きへ<i class="bi bi-hand-index-thumb"></i></a></p>
 
                 </section>
@@ -182,7 +96,11 @@
             <section>
 
             </section>
-
+            <script type="text/javascript">
+                            // $('.like-btn').on('click', function() {
+                            //     $(this).toggleClass('is-active');
+                            // });
+            </script>
         </main>
         <!-- フッター部分 -->
         <footer>
