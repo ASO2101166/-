@@ -12,7 +12,7 @@
             $userData = $ps->fetchAll();
             foreach($userData as $row){  
                 if(password_verify($pass, $row['password']) == true){
-                    $_SESSION['user'] = serialize(new UserInfo($row['user_name'], $row['user_id']));
+                    $_SESSION['user'] = serialize(new UserInfo($row['user_name'], $row['user_id'], $row['point']));
                     return true;
                 }else{
                     return false;
