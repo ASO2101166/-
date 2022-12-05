@@ -16,6 +16,9 @@ h1{
     text-align: center;
     margin-top: 5%;
 }
+.error{
+    color: #e74c3c;
+}
 #btn{
     display: block;
     height: 36px;
