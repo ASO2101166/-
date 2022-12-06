@@ -48,7 +48,8 @@ body {
 /*リセット*/
 figure {margin: 0;}
 dd {margin: 0;}
-nav {margin: 0;padding: 0;}
+nav {margin: 0; padding: 0;}
+#nav{ margin-right:auto; }
 
 /*table全般の設定*/
 table {border-collapse:collapse;}
@@ -212,15 +213,16 @@ a.ddmenu {
 
 /*３本バーを囲むブロック*/
 #menubar_hdr {
-	position: fixed;z-index: 101;
+	position: fixed;overflow-y: scroll;
 	cursor: pointer;
 	right: 3%;			/*左からの配置場所指定*/
 	top: 0px;			/*上からの配置場所指定*/
 	padding: 16px 14px;	/*上下、左右への余白*/
 	width: 52px;		/*幅（３本バーが出ている場合の幅になります）*/
-	height: 52px;		/*高さ*/
+	height: 2000px;		/*高さ*/
 	display: flex;					/*flexボックスを使う指定*/
-	flex-direction: column;			/*子要素（３本バー）を縦並びにする*/
+	flex-direction: column;
+	-webkit-overflow-scrolling: touch; 		/*子要素（３本バー）を縦並びにする*/
 	justify-content: space-between;	/*並びかたの種類の指定*/
 	order: 0;						/*表示させる順番。「#menubar_hdr」「#logo」「#header-icon」それぞれに指定しており、数字の「小さな順」に左から並びます。*/
 	background: rgba(0,0,0,0.5);	/*背景色*/
@@ -885,6 +887,7 @@ header {
 	z-index: 99;
 	background: rgb(9, 9, 9);
 	transition: .5s;
+
   }
   
   /* メニュー黒ポチを消す */
@@ -906,6 +909,8 @@ header {
 	padding-top: 20px;
 	margin-right: 60px;
   }
+  
+
   .quantity input {
 	-webkit-appearance: none;
 	border: none;
