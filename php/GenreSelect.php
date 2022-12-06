@@ -4,7 +4,7 @@
         function genreselectlevel1(){
             $cls = new Dbconnect();
             $pdo = $cls->dbConnect();
-            $sql = "SELECT * FROM genres WHERE genre_level = 1;";
+            $sql = "SELECT * FROM genres WHERE genre_level = 2;";
             $genreData = $pdo->query($sql);
             return $genreData;
         }
