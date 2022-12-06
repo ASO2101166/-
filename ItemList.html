@@ -7,8 +7,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <meta name="description" content="ここにサイト説明を入れます">
   <link rel="stylesheet" href="css/style.css">
+
   <link rel="stylesheet" href="css/ItemList.css">
-<!-- ======= -->
   <link rel="stylesheet" href="css/genre.css">
 
   <?php
@@ -16,7 +16,6 @@
     require_once 'php/GenreSelect.php';
     
   ?>
-<!-- >>>>>>> main -->
 </head>
 
 <body class="home">
@@ -25,142 +24,46 @@
 
     <!-- ヘッダー部分 -->
     <header>
-<!-- >>>>>>> HEAD -->
-      <div class="nav">  
-        <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
-        <input id="drawer_input" class="drawer_hidden" type="checkbox">  
-        <!-- ハンバーガーアイコン -->
-        <label for="drawer_input" class="drawer_open"><span></span></label>   
-        <!-- メニュー -->
-        <nav class="nav_content">
+    <?php include('template/Header.html');?>
+    <h1 id="logo"><a href="ItemList.html" class="menu"></a>
+          <!-- ハンバーガーメニュー部分 -->
+        <div class="nav">  
+          <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+          <input id="drawer_input" class="drawer_hidden" type="checkbox">  
+          <!-- ハンバーガーアイコン -->
+          <label for="drawer_input" class="drawer_open"><span></span></label>   
+          <!-- メニュー -->
+          <nav class="nav_content">
           <ul id="accordion" class="accordion">
-            <li>
-              <div class="link"><i class="fa fa-rikuzyo"></i>陸上<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">シューズ</a></li>
-                <li><a href="#">スパイク</a></li>
-                <li><a href="#">ウェア</a></li>
-                <li><a href="#">スパイクピン</a></li>
-              </ul>
-            </li>
-            <li>
-              <div class="link"><i class="fa fa-yakyu"></i>野球<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">バッド</a></li>
-                <li><a href="#">ボール</a></li>
-                <li><a href="#">グローブ</a></li>
-                <li><a href="#">スパイク</a></li>
-              </ul>
-            </li>
-            <li><div class="link"><i class="fa fa-hoke"></i>ホッケー<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">ホッケースティック</a></li>
-                <li><a href="#">ホッケーボール</a></li>
-                <li><a href="#">ウェア</a></li>
-                <li><a href="#">シューズ</a></li>
-                <li><a href="#">スティックバッグ</a></li>
-                <li><a href="#">プロテクトギア</a></li>
-              </ul>
-            </li>
-            <li><div class="link"><i class="fa fa-ragubi"></i>ラグビー<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">ラグビーボール</a></li>
-                <li><a href="#">ヘッドガード</a></li>
-                <li><a href="#">スパイク</a></li>
-                <li><a href="#">ウェア</a></li>
-              </ul>
-            </li>
-            <li><div class="link"><i class="fa fa-succer"></i>サッカー<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">シューズ</a></li>
-                <li><a href="#">レガース</a></li>
-                <li><a href="#">ストッキング</a></li>
-                <li><a href="#">ボール</a></li>
-                <li><a href="#">ウェア</a></li>
-              </ul>
-            </li>
-            <li><div class="link"><i class="fa fa-suiei"></i>水泳<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">水着・スイムウェア</a></li>
-                <li><a href="#">スイムキャップ</a></li>
-                <li><a href="#">スイミングゴーグル</a></li>
-                <li><a href="#">プールバッグ</a></li>
-                <li><a href="#">ビート版</a></li>
-              </ul>
-            </li>
-            <li><div class="link"><i class="fa fa-tenis"></i>テニス<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">ラケット</a></li>
-                <li><a href="#">ラケットバッグ</a></li>
-                <li><a href="#">ウェア</a></li>
-                <li><a href="#">シューズ</a></li>
-                <li><a href="#">ボール</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-        <nav class="nav_content">
-          <ul id="accordion" class="accordion">
-            <li>
-              <div class="link"><i class="fa fa-bado"></i>バドミントン<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">ラケット</a></li>
-                <li><a href="#">シャトル</a></li>
-                <li><a href="#">シューズ</a></li>
-                <li><a href="#">ウェア</a></li>
-                <li><a href="#">バッグ</a></li>
-              </ul>
-            </li>
-            <li>
-              <div class="link"><i class="fa fa-bask"></i>バスケットボール<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">ボール</a></li>
-                <li><a href="#">シューズ</a></li>
-                <li><a href="#">ウェア</a></li>
-                <li><a href="#">手入れ用品</a></li>
-              </ul>
-            </li>
-            <li>
-              <div class="link"><i class="fa fa-kendo"></i>剣道<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">刀</a></li>
-                <li><a href="#">竹刀</a></li>
-                <li><a href="#">木刀</a></li>
-                <li><a href="#">剣道着</a></li>
-                <li><a href="#">剣道上着</a></li>
-                <li><a href="#">剣道袴</a></li>
-              </ul>
-            </li>
-            <li><div class="link"><i class="fa fa-takkyu"></i>卓球<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">ラケット</a></li>
-                <li><a href="#">ラバー</a></li>
-                <li><a href="#">シューズ</a></li>
-                <li><a href="#">手入れ用品</a></li>
-                <li><a href="#">ウェア</a></li>
-                <li><a href="#">ボール</a></li>
-                <li><a href="#">収納バッグ</a></li>
-              </ul>
-            </li>
-            <li><div class="link"><i class="fa fa-bare"></i>バレーボール<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">ウェア</a></li>
-                <li><a href="#">サポーター</a></li>
-                <li><a href="#">シューズ</a></li>
-                <li><a href="#">ボール</a></li>
-              </ul>
-            </li>
-            <li><div class="link"><i class="fa fa-zyudo"></i>柔道<i class="fa fa-chevron-down"></i></div>
-              <ul class="submenu">
-                <li><a href="#">柔道着</a></li>
-                <li><a href="#">柔道袋</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-<!-- >>>>>>> main -->
-      <?php include('template/Header.html');?>
+              <?php
+                $ClsGenreSelect = new GenreSelect();
+                $genrelevel1 = $ClsGenreSelect->genreselectlevel1();
+                foreach($genrelevel1 as $genre1){
+              ?>
+              <li>
+                <div class="link"><i class="fa fa-rikuzyo"></i><?php echo $genre1['genre_name']?><i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <?php
+                    $genrelevel2 = $ClsGenreSelect->genreselectlevel2($genre1['genre_code']);
+                    foreach($genrelevel2 as $genre2){
+                  ?>
+                  <form action="ItemList.html" method="post">
+                    <input type="hidden" name="genre_code" value="<?php echo $genre2['genre_code']?>">
+                    <li><input type="submit" value="<?php echo $genre2['genre_name']?>"/></li>
+                  </form>
+                  <?php
+                    }
+                  ?>
+                </ul>
+              </li>
+              <?php
+                }
+              ?>
+            </ul>
+          </nav>
+        </div>
+      </h1>
+      
     </header>
     <section>
 
@@ -189,7 +92,11 @@
           <div class="list-container">
             <?php
               $ClsItemSelect = new ItemSelect();
-              $itemData = $ClsItemSelect->itemselect();
+              if(isset($_POST['genre_code'])){
+                $itemData = $ClsItemSelect->itemselectBygenre($_POST['genre_code']);
+              }else{
+                $itemData = $ClsItemSelect->itemselect();
+              }
               foreach($itemData as $row){
             ?>
             <div class="list blur">
@@ -219,37 +126,6 @@
             <?php
               }
             ?>
-            <div class="list blur">
-              <figure><img src="images/ItemList4.jpg" alt=""></figure>
-              <div class="text">
-                <h4>グローブ</h4>
-                <p>ここに説明を入れます。サンプルテキスト。</p>
-              </div>
-              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
-              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-              <span class="new">NEW</span>
-            </div>
-
-            <div class="list blur">
-              <figure><img src="images/ItemList5.jpg" alt=""></figure>
-              <div class="text">
-                <h4>サポーター</h4>
-                <p>ここに説明を入れます。サンプルテキスト。</p>
-              </div>
-              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
-              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-            </div>
-
-            <div class="list blur">
-              <figure><img src="images/ItemList6.jpg" alt=""></figure>
-              <div class="text">
-                <h4>スパイク</h4>
-                <p>ここに説明を入れます。サンプルテキスト。</p>
-              </div>
-              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
-              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-            </div>
-
           </div>
           <!--/.list-container-->
 

@@ -21,7 +21,13 @@
 
         <!-- ヘッダー部分 -->
         <header>
-            <?php include('template/Header.html');?>
+            <?php 
+                include('template/Header.html');
+                if($sessioncheck == false){
+                    header('Location: Login.html');
+                    exit();
+                }
+            ?>
         </header>
         
         <main> 
@@ -45,12 +51,12 @@
                                 <div class="quantity">
                                     <button class="minus-btn" type="button" name="button" 
                                             onclick="genshou(event,<?php echo $cartdata['cart_id'];?>,'hiki')">
-                                        <img src="svg/minus.svg" alt="" />
+                                        <img src="svg/minus.svg" alt="" style="pointer-events: none;"/>
                                     </button>
                                     <span class="cartkosuu"><?php echo $cartdata['quantity'];?></span>
                                     <button class="plus-btn" type="button" name="button" 
                                             onclick="zouka(event,<?php echo $cartdata['cart_id'];?>,'tasi')">
-                                        <img src="svg/plus.svg" alt="" />
+                                        <img src="svg/plus.svg" alt="" style="pointer-events: none;"/>
                                     </button>
                                 </div>
                                 <h1><i class="bi bi-currency-yen"></i><?php echo $cartdata['unit_price'];?></h1>
