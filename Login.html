@@ -8,6 +8,13 @@
     </head>
     <body>
         <h1>学生のためのスポーツ用品</h1>
+        <?php
+            if(isset($_GET['error'])){
+        ?>
+            <div class="error" style="text-align: center;">メールアドレスまたはパスワードが違います</div>
+        <?php
+            }
+        ?>
         <div id="app">
             <div class="allform">
                 <form action="php/LoginCheck.php" method="post">

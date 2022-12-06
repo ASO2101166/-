@@ -3,6 +3,10 @@
     require_once 'UserInfo.php';
     require_once 'Dbconnect.php';
     require_once 'CartSelect.php';
+    if(isset($_SESSION['user']) == false){
+        header('Location: ../Login.html');
+        exit();
+    }
     $user = unserialize($_SESSION['user']);
 
     $cls = new Dbconnect();
