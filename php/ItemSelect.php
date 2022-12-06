@@ -13,5 +13,16 @@
             // $userData = $ps->fetchAll();
             return $itemData;
         }
+
+        function itemselectBygenre($genre_code){
+            $cls = new Dbconnect();
+            $pdo = $cls->dbConnect();
+            $sql = "SELECT * FROM items WHERE genre_code = ?;";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1,$genre_code,PDO::PARAM_STR);
+            $ps->execute();
+            $itemData = $ps->fetchAll();
+            return $itemData;
+        }
     }
 ?>

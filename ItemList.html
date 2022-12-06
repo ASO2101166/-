@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
   <meta name="description" content="ここにサイト説明を入れます">
   <link rel="stylesheet" href="css/style.css">
+
+  <link rel="stylesheet" href="css/ItemList.css">
   <link rel="stylesheet" href="css/genre.css">
 
   <?php
@@ -14,6 +16,7 @@
     require_once 'php/GenreSelect.php';
     
   ?>
+
 </head>
 
 <body class="home">
@@ -22,7 +25,8 @@
 
     <!-- ヘッダー部分 -->
     <header>
-      <h1 id="logo"><a href="ItemList.html" class="menu"></a>
+    <?php include('template/Header.html');?>
+    <h1 id="logo"><a href="ItemList.html" class="menu"></a>
           <!-- ハンバーガーメニュー部分 -->
         <div class="nav">  
           <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
@@ -31,44 +35,52 @@
           <label for="drawer_input" class="drawer_open"><span></span></label>   
           <!-- メニュー -->
           <nav class="nav_content">
-            <div style="position:relative;">
-              <img src="images/屋外スポーツ.png" style="width:100%;height:200px;"></img>
-              <p class="text-center">Out door</p>
-            </div> 
-            <div style="position:relative;">
-              <img src="images/屋内スポーツ.png" style="width:100%;height:200px;"></img>
-              <p class="text-center">In door</p>
-            </div> 
-            <ui>
+          <ul id="accordion" class="accordion">
               <?php
                 $ClsGenreSelect = new GenreSelect();
                 $genrelevel1 = $ClsGenreSelect->genreselectlevel1();
-                foreach($genrelevel1 as $level1){
-
-                
+                foreach($genrelevel1 as $genre1){
               ?>
-              <li class="nav_item"><?php echo $level1['genre_name'];?></li>
+              <li>
+                <div class="link"><i class="fa fa-rikuzyo"></i><?php echo $genre1['genre_name']?><i class="fa fa-chevron-down"></i></div>
+                <ul class="submenu">
+                  <?php
+                    $genrelevel2 = $ClsGenreSelect->genreselectlevel2($genre1['genre_code']);
+                    foreach($genrelevel2 as $genre2){
+                  ?>
+                  <form action="ItemList.html" method="post">
+                    <input type="hidden" name="genre_code" value="<?php echo $genre2['genre_code']?>">
+                    <li><input type="submit" value="<?php echo $genre2['genre_name']?>"/></li>
+                  </form>
+                  <?php
+                    }
+                  ?>
+                </ul>
+              </li>
               <?php
                 }
               ?>
-            </ui>
-            <li class="nav_item"><a href="">野球</a></li>
-            <li class="nav_item"><a href="">野球</a></li>
-            <li class="nav_item"><a href="">サッカー</a></li>
-            <li class="nav_item"><a href="">卓球</a></li>
+            </ul>
           </nav>
         </div>
       </h1>
-      <?php include('template/Header.html');?>
+      
     </header>
+    <section>
 
+    </section>
+  
 
     <!--スライドショー（slick）-->
+    <!-- Contenedor -->
+    
     <div class="mainimg">
       <div><img src="images/ItemList1.jpg" alt=""></div>
       <div><img src="images/ItemList2.jpg" alt=""></div>
       <div><img src="images/ItemList3.jpg" alt=""></div>
     </div>
+
+
 
     <main>
 
@@ -81,7 +93,11 @@
           <div class="list-container">
             <?php
               $ClsItemSelect = new ItemSelect();
-              $itemData = $ClsItemSelect->itemselect();
+              if(isset($_POST['genre_code'])){
+                $itemData = $ClsItemSelect->itemselectBygenre($_POST['genre_code']);
+              }else{
+                $itemData = $ClsItemSelect->itemselect();
+              }
               foreach($itemData as $row){
             ?>
             <div class="list blur">
@@ -111,37 +127,6 @@
             <?php
               }
             ?>
-            <div class="list blur">
-              <figure><img src="images/ItemList4.jpg" alt=""></figure>
-              <div class="text">
-                <h4>グローブ</h4>
-                <p>ここに説明を入れます。サンプルテキスト。</p>
-              </div>
-              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
-              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-              <span class="new">NEW</span>
-            </div>
-
-            <div class="list blur">
-              <figure><img src="images/ItemList5.jpg" alt=""></figure>
-              <div class="text">
-                <h4>サポーター</h4>
-                <p>ここに説明を入れます。サンプルテキスト。</p>
-              </div>
-              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
-              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-            </div>
-
-            <div class="list blur">
-              <figure><img src="images/ItemList6.jpg" alt=""></figure>
-              <div class="text">
-                <h4>スパイク</h4>
-                <p>ここに説明を入れます。サンプルテキスト。</p>
-              </div>
-              <p class="btn"><a href="Cart.html">カートに入れる</a></p>
-              <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p>
-            </div>
-
           </div>
           <!--/.list-container-->
 
@@ -181,6 +166,7 @@
   <!--スライドショー（slick）-->
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="js/slick.js"></script>
+  <script src="js/ItemList.js"></script>
 
 </body>
 </html>

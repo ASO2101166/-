@@ -1,5 +1,5 @@
 <?php
-    require_once '../Dbconnect.php';
+    require_once '../php/Dbconnect.php';
 
     $cls = new Dbconnect();
     $pdo = $cls->dbConnect();

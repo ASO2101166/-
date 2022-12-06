@@ -48,7 +48,10 @@
               <h4><?php echo $item['item_name']?></h4>
               <h4><i class="bi bi-currency-yen"></i><?php echo $item['unit_price']?></h4>
             </div>
-            <p class="btn"><a href="Cart.html">カートに入れる</a></p>
+            <form action="php/CartCreate.php" method="post">
+              <input type="hidden" name="item_id" value="<?php echo $item['item_id']?>">
+              <p class="btn"><input type="submit" value="カートに入れる"></p>
+            </form>
             <span class="new">人気！</span>
           </div>
 
@@ -66,7 +69,10 @@
               <h4><?php echo $itemset['item_name'];?></h4>
               <h4><i class="bi bi-currency-yen"></i><?php echo $itemset['unit_price'];?></h4>
             </div>
-            <p class="btn"><a href="Cart.html">カートに入れる</a></p>
+            <form action="php/CartCreate.php" method="post">
+              <input type="hidden" name="item_id" value="<?php echo $itemset['item_id']?>">
+              <p class="btn"><input type="submit" value="カートに入れる"></p>
+            </form>
           </div>
           <?php
             }

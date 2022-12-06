@@ -13,7 +13,7 @@
             header('Location: ../ItemList.html');
             exit();
         }else{
-            echo '違います';
+            echo header('Location: ../Login.html?error');
         }
     }
 ?>

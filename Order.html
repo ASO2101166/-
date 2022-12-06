@@ -16,42 +16,41 @@
     <div id="container">
 
         <header>
-            <?php include('template/Header.html');?>
+            <?php 
+                include('template/Header.html');
+                if($sessioncheck == false){
+                    header('Location: Login.html');
+                    exit();
+                }
+            ?>
         </header>
 
         <main>
             <div class="bg1">
 
                 <section>
-                    <h2>３点のご購入<i class="bi bi-basket2"></i></h2>
+                    <h2><?php echo count($_POST['item']);?>点のご購入<i class="bi bi-basket2"></i></h2>
                     <div class="list-container">
+                        <?php
+                            $count = 0;
+                            foreach($_POST['item'] as $item){
 
+                        ?>
                         <div class="list blur">
-                            <figure><img src="images/ItemList4.jpg" alt=""></figure>
+                            <figure><img src="images/<?php echo $item['item_image'];?>" alt=""></figure>
                             <div class="text">
-                                <h4>グローブ</h4>
-                                <h3>数量：</h3>
-                                <h1><i class="bi bi-currency-yen"></i>1,800</h1>
+                                <h4><?php echo $item['item_name'];?></h4>
+                                <h3>数量：<?php echo $item['quantity']?></h3>
+                                <h1><i class="bi bi-currency-yen"></i><?php echo $item['unit_price']?></h1>
                             </div>
                         </div>
-
-                        <div class="list blur">
-                            <figure><img src="images/ItemList5.jpg" alt=""></figure>
-                            <div class="text">
-                                <h4>サポーター</h4>
-                                <h3>数量：</h3>
-                                <h1><i class="bi bi-currency-yen"></i>1,800</h1>
-                            </div>
-                        </div>
-
-                        <div class="list blur">
-                            <figure><img src="images/ItemList6.jpg" alt=""></figure>
-                            <div class="text">
-                                <h4>スパイク</h4>
-                                <h3>数量：</h3>
-                                <h1><i class="bi bi-currency-yen"></i>1,800</h1>
-                            </div>
-                        </div>
+                        <!-- OrderCreate.php に送るフォームの内容 -->
+                        <input type="hidden" form="OrderHistoryForm" name="cart_id[<?php echo $count;?>]" value="<?php echo $item['cart_id'];?>">
+                        <!-- ------------------------------------ -->
+                        <?php
+                                $count++;
+                            }
+                        ?>
                         <div>
                             <h2>注文内容</h2>
                             <h3>　小計：¥</h3>
@@ -66,7 +65,9 @@
                     </div>
                     <!--/.list-container-->
                     <div class="button004">
-                        <a href="OrderHistory.html">注文確定</a>
+                        <form action="php/OrderCreate.php" id="OrderHistoryForm" method="post">
+                            <input type="submit" value="注文確定">
+                        </form>
                     </div>
                     <div class="button005">
                         <a href="Cart.html">戻る</a>
