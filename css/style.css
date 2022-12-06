@@ -213,16 +213,15 @@ a.ddmenu {
 
 /*３本バーを囲むブロック*/
 #menubar_hdr {
-	position: fixed;overflow-y: scroll;
+	position: fixed;z-index: 101;
 	cursor: pointer;
 	right: 3%;			/*左からの配置場所指定*/
 	top: 0px;			/*上からの配置場所指定*/
 	padding: 16px 14px;	/*上下、左右への余白*/
 	width: 52px;		/*幅（３本バーが出ている場合の幅になります）*/
-	height: 2000px;		/*高さ*/
+	height: 52px;		/*高さ*/
 	display: flex;					/*flexボックスを使う指定*/
-	flex-direction: column;
-	-webkit-overflow-scrolling: touch; 		/*子要素（３本バー）を縦並びにする*/
+	flex-direction: column;			/*子要素（３本バー）を縦並びにする*/
 	justify-content: space-between;	/*並びかたの種類の指定*/
 	order: 0;						/*表示させる順番。「#menubar_hdr」「#logo」「#header-icon」それぞれに指定しており、数字の「小さな順」に左から並びます。*/
 	background: rgba(0,0,0,0.5);	/*背景色*/
