@@ -12,7 +12,7 @@
   <?php
     require_once 'php/ItemSelect.php';
     require_once 'php/GenreSelect.php';
-    
+    require_once 'php/OrderSelect.php';
   ?>
 </head>
 
@@ -37,58 +37,60 @@
     <main>
       <article>
         <?php
-          
+          $ClsOrderSelect = new OrderSelect();
+          $orderdatas = $ClsOrderSelect->orderselectbyuserid($user->user_id);
+          foreach($orderdatas as $orderdata){
         ?>
         <div class="waku">
           <div class="order">
-            <p class="">配送予定日<br>2022/09/06</p>
-            <p class="">合計金額<br>¥19,580</p>
+            <p class="">注文日<br><?php echo $orderdata['order_date'];?></p>
+            <p class="">合計金額<br>￥<?php echo number_format($orderdata['total_price']);?></p>
           </div>
           <div class="orderdetail-area">
+            <?php
+              $orderdetaildatas = $ClsOrderSelect->orderdetailselectbyorderid($orderdata['order_id']);
+              $length = count($orderdetaildatas);
+              $count = 0;
+              foreach($orderdetaildatas as $orderdetaildata){
+            ?>
             <div class="orderdetail">
               <div class="order-image-area">
-                <img class="order-image" src="images/bag.jpg" height="100" >
+                <img class="order-image" src="images/<?php echo $orderdetaildata['item_image'];?>" height="100" >
               </div>
               <div>
-                <a class ="item-name">スニーカー</a>
-                <div class ="bottom">¥9,790(税込)</div>
-                <div class ="right">個数：１</div>
+                <form id="ItemDetailForm" action="ItemDetail.php" method="post">
+                  <input type="hidden" name="item[item_id]" value="<?php echo $orderdetaildata['item_id']?>">
+                  <input type="hidden" name="item[item_name]" value="<?php echo $orderdetaildata['item_name']?>">
+                  <input type="hidden" name="item[item_image]" value="<?php echo $orderdetaildata['item_image']?>">
+                  <input type="hidden" name="item[explanation]" value="<?php echo $orderdetaildata['explanation']?>">
+                  <input type="hidden" name="item[unit_price]" value="<?php echo $orderdetaildata['unit_price']?>">
+                  <input type="hidden" name="item[genre_code]" value="<?php echo $orderdetaildata['genre_code']?>">
+                  <input type="hidden" name="item[set_discount_division]" value="<?php echo $orderdetaildata['set_discount_division']?>">
+                  <input type="submit" value="<?php echo $orderdetaildata['item_name'];?>">
+                </form>
+                <div class ="bottom">￥<?php echo number_format($orderdetaildata['unit_price']);?></div>
+                <div class ="right">個数：<?php echo $orderdetaildata['quantity'];?></div>
               </div>
-              <form action="" method="post" class="orderform">
+              <form action="php/CartRegister.php" method="post" class="orderform">
+                <input type="hidden" name="order[item_id]" value="<?php echo $orderdetaildata['item_id']?>">
+                <input type="hidden" name="order[user_id]" value="<?php echo $user->user_id;?>">
                 <input type="submit" value="再度カートに入れる" class="cartbtn">
               </form>
             </div>
+            <?php
+                $count++;
+                if($count !== $length){
+            ?>
             <div class="hr"></div>
-            <div class="orderdetail">
-              <div class="order-image-area">
-                <img class="order-image" src="images/bag.jpg" height="100" >
-              </div>
-              <div>
-                <a class ="item-name">スニーカー</a>
-                <div class ="bottom">¥9,790(税込)</div>
-                <div class ="right">個数：１</div>
-              </div>
-              <form action="" method="post" class="orderform">
-                <input type="submit" value="再度カートに入れる" class="cartbtn">
-              </form>
-            </div>
-            <div class="hr"></div>
-            <div class="orderdetail">
-              <div class="order-image-area">
-                <img class="order-image" src="images/bag.jpg" height="100" >
-              </div>
-              <div>
-                <a class ="item-name">スニーカー</a>
-                <div class ="bottom">¥9,790(税込)</div>
-                <div class ="right">個数：１</div>
-              </div>
-              <form action="" method="post" class="orderform">
-                <input type="submit" value="再度カートに入れる" class="cartbtn">
-              </form>
-            </div>
+            <?php
+                }
+              }
+            ?>
           </div>
         </div>
-        
+        <?php
+          }
+        ?>
       </article>
     </main>
 

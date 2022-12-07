@@ -10,13 +10,13 @@
     $cls = new Dbconnect();
     $pdo = $cls->dbConnect();
 
-    $sql = "INSERT INTO orders(user_id, total_price) VALUES 
+    $sql = "INSERT INTO orders(user_id, total_price, order_date) VALUES 
                               (?, (SELECT SUM(c.quantity * i.unit_price) AS total_price
                                    FROM carts AS c LEFT OUTER JOIN items AS i
                                    ON c.item_id = i.item_id
                                    WHERE c.cart_id IN (".implode(',', $_POST['cart_id']).")
-                                   )
-                              );";
+                                   ),
+                                now());";
     $ps = $pdo->prepare($sql);
     $ps->bindValue(1,$user->user_id,PDO::PARAM_INT);
     $ps->execute();
@@ -35,6 +35,7 @@
             WHERE order_detail_id = 0
             ;";
 
+    $sql4 = "UPDATE carts SET registration_status = false WHERE cart_id IN(".implode(',', $_POST['cart_id']).")";
 
     foreach($_POST['cart_id'] as $cart_id){
         $ps = $pdo->prepare($sql2);
@@ -42,7 +43,9 @@
         $ps->bindValue(2,$cart_id,PDO::PARAM_INT);
         $ps->execute();
         $pdo->query($sql3);
+        $pdo->query($sql4);
     }
+
 
     header('Location: ../OrderHistory.php',true, 307);
     exit();

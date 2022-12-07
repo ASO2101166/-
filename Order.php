@@ -25,6 +25,10 @@
                     header('Location: Login.php');
                     exit();
                 }
+                if(!isset($_POST['item'])){
+                    header('Location: Cart.php');
+                    exit();
+                }
             ?>
         </header>
 

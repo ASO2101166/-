@@ -3,11 +3,7 @@
     border-radius:5px;
     margin-bottom:10px;
 }
-.item-name {
-    color: #0033cc; 
-    font-size: 18px;
-    text-decoration: none;
-}
+
 .right {
       text-align: right;
   }
@@ -71,4 +67,16 @@ form .cartbtn:hover{
 .orderform {
     margin-left:auto;
     margin-top:auto;
+}
+
+#ItemDetailForm input[type="submit"] {
+    color: #0033cc; 
+    font-size: 18px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
 }

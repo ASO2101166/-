@@ -3,7 +3,7 @@
         session_start();
     }
     require_once 'Dbconnect.php';
-
+    
     $cls = new Dbconnect();
     $pdo = $cls->dbConnect();
     $sql = "UPDATE carts SET registration_status = false WHERE cart_id = ?";
