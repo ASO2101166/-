@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="css/genre.css">
 
   <?php
+    if(!isset($_SESSION)){
+      session_start();
+    }
     require_once 'php/ItemSelect.php';
     require_once 'php/GenreSelect.php';
     
@@ -130,7 +133,7 @@
           </div>
           <!--/.list-container-->
 
-          <p class="btn mt30"><a href="ItemList.html" class="ws">もっとみる<i class="bi bi-hand-index"></i></a></p>
+          <p class="btn mt30"><button class="ws" type="button" name="button" onclick="mottomiru(<?php $row['item_id']?>)">もっとみる<i class="bi bi-hand-index"></i></button></p>
 
         </section>
 

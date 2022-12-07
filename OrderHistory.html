@@ -22,7 +22,10 @@
 
     <!-- ヘッダー部分 -->
     <header>
-      <?php 
+      <?php
+        if(!isset($_SESSION)){
+          session_start();
+        }
         include('template/Header.html');
         if($sessioncheck == false){
           header('Location: Login.html');

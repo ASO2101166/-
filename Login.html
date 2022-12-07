@@ -5,6 +5,11 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <link rel="stylesheet" href="./css/login_style.css" />
         <title></title>
+        <?php
+            if(!isset($_SESSION)){
+                session_start();
+            }
+        ?>
     </head>
     <body>
         <h1>学生のためのスポーツ用品</h1>
@@ -32,11 +37,11 @@
 </html>
 
 <?php
-    session_start();
-    require_once 'php/UserInfo.php';
-    require_once 'php/SessionCheck.php';
+    require_once './php/UserInfo.php';
+    require_once './php/SessionCheck.php';
     $ClsSessionCheck = new SessionCheck();
     if($ClsSessionCheck->sessioncheck() == true){
         header('Location: ItemList.html');
+        exit();
     }
 ?>
