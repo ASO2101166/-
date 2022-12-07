@@ -8,7 +8,7 @@
   <meta name="description" content="ここにサイト説明を入れます">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="./css/orderhistory.css" />
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <?php
     require_once 'php/ItemSelect.php';
     require_once 'php/GenreSelect.php';
@@ -36,46 +36,60 @@
 
     <main>
       <article>
-        <div class = "order">
-          <fieldset>
-                      <p class ="chumon">2022/09/26注文
-                      お届け先：○○</p>
-                      
-                      <p>
-                          <img src="image/117.png"  align="left">
-                          <p class ="top"> 商品タイトル</p>
-                          <p class ="bottom">個数：１個<br>
-                          合計：¥10,000</p2><button class ="ka-to">再度カートに入れる</button>
-                      </p>
-          </fieldset>
-
-          <fieldset>
-                      <p class ="chumon">2022/09/26注文
-                      お届け先：○○</p>
-                  
-                      <p>
-                          <img src="image/117.png"  align="left">
-                          <p class ="top"> 商品タイトル</p>
-                          <p class ="bottom">個数：１個<br>
-                          合計：¥10,000</p2><button class ="ka-to">再度カートに入れる</button>
-                      </p>
-          </fieldset>
-
-          <fieldset>
-                      <p class ="chumon">2022/09/26注文
-                      お届け先：○○</p>
-                  
-                      <p>
-                          <img src="image/117.png"  align="left">
-                          <p class ="top"> 商品タイトル</p>
-                          <p class ="bottom">個数：１個<br>
-                          合計：¥10,000</p2><button class ="ka-to">再度カートに入れる</button>
-                      </p>
-          </fieldset>
-      </div>
-
+        <?php
+          
+        ?>
+        <div class="waku">
+          <div class="order">
+            <p class="">配送予定日<br>2022/09/06</p>
+            <p class="">合計金額<br>¥19,580</p>
+          </div>
+          <div class="orderdetail-area">
+            <div class="orderdetail">
+              <div class="order-image-area">
+                <img class="order-image" src="images/bag.jpg" height="100" >
+              </div>
+              <div>
+                <a class ="item-name">スニーカー</a>
+                <div class ="bottom">¥9,790(税込)</div>
+                <div class ="right">個数：１</div>
+              </div>
+              <form action="" method="post" class="orderform">
+                <input type="submit" value="再度カートに入れる" class="cartbtn">
+              </form>
+            </div>
+            <div class="hr"></div>
+            <div class="orderdetail">
+              <div class="order-image-area">
+                <img class="order-image" src="images/bag.jpg" height="100" >
+              </div>
+              <div>
+                <a class ="item-name">スニーカー</a>
+                <div class ="bottom">¥9,790(税込)</div>
+                <div class ="right">個数：１</div>
+              </div>
+              <form action="" method="post" class="orderform">
+                <input type="submit" value="再度カートに入れる" class="cartbtn">
+              </form>
+            </div>
+            <div class="hr"></div>
+            <div class="orderdetail">
+              <div class="order-image-area">
+                <img class="order-image" src="images/bag.jpg" height="100" >
+              </div>
+              <div>
+                <a class ="item-name">スニーカー</a>
+                <div class ="bottom">¥9,790(税込)</div>
+                <div class ="right">個数：１</div>
+              </div>
+              <form action="" method="post" class="orderform">
+                <input type="submit" value="再度カートに入れる" class="cartbtn">
+              </form>
+            </div>
+          </div>
+        </div>
+        
       </article>
-
     </main>
 
     <!-- フッター部分 -->
@@ -99,6 +113,6 @@
   <!--このテンプレート専用のスクリプト-->
   <script src="js/main.js"></script>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
