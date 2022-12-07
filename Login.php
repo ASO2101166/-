@@ -40,8 +40,8 @@
     require_once './php/UserInfo.php';
     require_once './php/SessionCheck.php';
     $ClsSessionCheck = new SessionCheck();
-    if($ClsSessionCheck->sessioncheck() == true){
-        header('Location: ItemList.html');
+    if($ClsSessionCheck->usersessioncheck() == true){
+        header('Location: ItemList.php', true, 304);
         exit();
     }
 ?>

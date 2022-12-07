@@ -26,9 +26,9 @@
         if(!isset($_SESSION)){
           session_start();
         }
-        include('template/Header.html');
-        if($sessioncheck == false){
-          header('Location: Login.html');
+        include('template/Header.php');
+        if($isLogin == false){
+          header('Location: Login.php');
           exit();
         }
       ?>
@@ -80,7 +80,7 @@
 
     <!-- フッター部分 -->
     <footer>
-      <?php include('template/Footer.html');?>
+      <?php include('template/Footer.php');?>
     </footer>
 
     <!--ページの上部へ戻るボタン-->
