@@ -1,4 +1,7 @@
 <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once 'Dbconnect.php';
 
     $cls = new Dbconnect();
@@ -9,5 +12,6 @@
     $ps->execute();
 
     header('Location: ../Cart.html');
+    exit();
 ?>
 

@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once 'UserInfo.php';
     require_once 'Dbconnect.php';
     require_once 'CartSelect.php';
@@ -36,4 +38,5 @@
     }
     
     header('Location: ../Cart.html');
+    exit();
 ?>

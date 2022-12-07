@@ -1,4 +1,7 @@
 <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
     class UserInfo{
         public $username;
         public $user_id;

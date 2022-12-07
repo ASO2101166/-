@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once 'SessionCheck.php';
     require_once 'UserSelect.php';
 
@@ -13,7 +15,8 @@
             header('Location: ../ItemList.html');
             exit();
         }else{
-            echo header('Location: ../Login.html?error');
+            header('Location: ../Login.html?error');
+            exit();
         }
     }
 ?>

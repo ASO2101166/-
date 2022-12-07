@@ -24,3 +24,26 @@ $(function() {
   
     var accordion = new Accordion($('#accordion'), false);
   });
+
+function mottomiru(item_id){
+  const data = item_id;
+  fetch('php/ItemSelect.php', {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+  })
+  .then((response) => {
+      if(!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+      }   
+      return response.json()
+  })
+  .then(res => {
+      console.log(res); // やりたい処理
+      
+  })
+  .catch(error => {
+      console.log(error); // エラー表示
+  });
+  console.log(JSON.stringify(data));
+}

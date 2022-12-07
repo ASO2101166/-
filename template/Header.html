@@ -3,7 +3,9 @@
 <nav id="menubar">
     <ul> 
         <?php
-            session_start();
+            if(!isset($_SESSION)){
+                session_start();
+            }
             require_once 'php/UserInfo.php';
             require_once 'php/SessionCheck.php';
             if(isset($_SESSION['user'])){

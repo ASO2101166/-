@@ -1,4 +1,7 @@
 <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
     class SessionCheck{
         function sessioncheck(){
             if(isset($_SESSION['user']) == true){
