@@ -29,10 +29,11 @@
              DATE_ADD(now(), INTERVAL 7 DAY));";
 
     $sql3 = "UPDATE orderdetails SET order_detail_id = (SELECT MAX(order_detail_id) + 1 
-                                                        FROM orderdetails 
-                                                        WHERE order_id = (SELECT MAX(order_id) FROM orders))
-             WHERE order_detail_id = 0
-    ;";
+                                                        FROM (SELECT order_id, order_detail_id FROM orderdetails) AS O
+                                                        WHERE order_id = (SELECT MAX(order_id) FROM orders)
+                                                        )
+            WHERE order_detail_id = 0
+            ;";
 
 
     foreach($_POST['cart_id'] as $cart_id){
@@ -43,6 +44,6 @@
         $pdo->query($sql3);
     }
 
-    header('Location: ../OrderHistory.html');
+    header('Location: ../OrderHistory.php',true, 307);
     exit();
 ?>

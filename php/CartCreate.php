@@ -6,7 +6,7 @@
     require_once 'Dbconnect.php';
     require_once 'CartSelect.php';
     if(isset($_SESSION['user']) == false){
-        header('Location: ../Login.html');
+        header('Location: ../Login.php',true, 307);
         exit();
     }
     $user = unserialize($_SESSION['user']);
@@ -37,6 +37,6 @@
         $ps2->execute();
     }
     
-    header('Location: ../Cart.html');
+    header('Location: ../Cart.php',true, 307);
     exit();
 ?>

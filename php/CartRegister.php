@@ -4,7 +4,7 @@
     }
     require_once 'Dbconnect.php';
     class CartRegister{
-        function cartregister($cart_id){
+        function cartregisterbycartid($cart_id){
             $cls = new Dbconnect();
             $pdo = $cls->dbConnect();
             $sql = "UPDATE carts SET registration_status = true WHERE cart_id = ?";

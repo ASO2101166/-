@@ -3,6 +3,6 @@
         session_start();
     }
     $_SESSION = array();
-    header('Location: ../Login.html');
+    header('Location: ../Login.php', true, 307);
     exit();
 ?>

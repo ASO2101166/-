@@ -22,7 +22,7 @@
 
     <!-- ヘッダー部分 -->
     <header>
-      <?php include('template/Header.html');?>
+      <?php include('template/Header.php');?>
     </header>
 
     <main>
@@ -96,7 +96,7 @@
 
     <!-- フッター部分 -->
     <footer>
-      <?php include('template/Footer.html');?>
+      <?php include('template/Footer.php');?>
     </footer>
 
     <!--ページの上部へ戻るボタン-->

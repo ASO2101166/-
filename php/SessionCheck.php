@@ -3,7 +3,7 @@
         session_start();
     }
     class SessionCheck{
-        function sessioncheck(){
+        function usersessioncheck(){
             if(isset($_SESSION['user']) == true){
                 return true;
             }else{

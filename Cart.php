@@ -26,9 +26,9 @@
         <!-- ヘッダー部分 -->
         <header>
             <?php 
-                include('template/Header.html');
-                if($sessioncheck == false){
-                    header('Location: Login.html');
+                include('template/Header.php');
+                if($isLogin == false){
+                    header('Location: Login.php');
                     exit();
                 }
             ?>
@@ -42,7 +42,7 @@
                     <div class="list-container">
                         <?php
                             $ClsCartSelect = new CartSelect();
-                            $cartdatas = $ClsCartSelect->cartselect($user->user_id);
+                            $cartdatas = $ClsCartSelect->cartselectbyuserid($user->user_id);
                             $count = 0;
                             foreach($cartdatas as $cartdata){
                                 
@@ -93,7 +93,7 @@
                     <!--/.list-container-->
 
                     <!-- Order.html に送るフォーム -->
-                    <form action="Order.html" id="OrderForm" method="post">
+                    <form action="Order.php" id="OrderForm" method="post">
                         <p class="btn mt30"><input type="submit" value="商品の注文手続きへ"class="ws"></p>
                     </form>
 
@@ -112,7 +112,7 @@
         </main>
         <!-- フッター部分 -->
         <footer>
-                <?php include('template/Footer.html');?>
+                <?php include('template/Footer.php');?>
         </footer>
 
         <!--ページの上部へ戻るボタン-->
