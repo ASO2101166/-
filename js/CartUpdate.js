@@ -1,5 +1,6 @@
 function genshou(e,cart_id,hiki){
     if(e.target.parentNode.querySelector('.cartkosuu').innerHTML > 1){
+        document.querySelector('.totalprice').innerHTML = document.querySelector('.totalprice').innerHTML - e.target.parentNode.parentNode.parentNode.querySelector('.unit_pricevalue').value * e.target.parentNode.parentNode.parentNode.querySelector('.quantityvalue').value;
         const data = {
             kosuu: e.target.parentNode.querySelector('.cartkosuu').innerHTML,
             cart_id: cart_id,
@@ -19,6 +20,14 @@ function genshou(e,cart_id,hiki){
         .then(res => {
             console.log(res); // やりたい処理
             e.target.parentNode.querySelector('.cartkosuu').innerHTML = res;
+            e.target.parentNode.parentNode.parentNode.querySelector('.quantityvalue').value = res;
+            document.querySelector('.totalprice').innerHTML = Number(document.querySelector('.totalprice').innerHTML) + e.target.parentNode.parentNode.parentNode.querySelector('.unit_pricevalue').value * res;
+            if(Number(document.querySelector('.totalprice').innerHTML) >= 10000){
+                document.querySelector('.muryou').querySelector('.uline').innerHTML = '無料配送まで：到達しました';
+            }else{
+                document.querySelector('.muryou').querySelector('.uline').innerHTML = '無料配送まで：￥' + (10000 - document.querySelector('.totalprice').innerHTML).toLocaleString();;
+            }
+            document.querySelector('.kakutokupoint').querySelector('.uline').innerHTML = '獲得ポイント：￥' + (document.querySelector('.totalprice').innerHTML * 0.02).toLocaleString();
         })
         .catch(error => {
             console.log(error); // エラー表示
@@ -28,6 +37,7 @@ function genshou(e,cart_id,hiki){
 }
 
 function zouka(e,cart_id,tasi){
+    document.querySelector('.totalprice').innerHTML = document.querySelector('.totalprice').innerHTML - e.target.parentNode.parentNode.parentNode.querySelector('.unit_pricevalue').value * e.target.parentNode.parentNode.parentNode.querySelector('.quantityvalue').value;
     const data = {
         kosuu: e.target.parentNode.querySelector('.cartkosuu').innerHTML,
         cart_id: cart_id,
@@ -47,6 +57,14 @@ function zouka(e,cart_id,tasi){
     .then(res => {
         console.log(res); // やりたい処理
         e.target.parentNode.querySelector('.cartkosuu').innerHTML = res;
+        e.target.parentNode.parentNode.parentNode.querySelector('.quantityvalue').value = res;
+        document.querySelector('.totalprice').innerHTML = Number(document.querySelector('.totalprice').innerHTML) + e.target.parentNode.parentNode.parentNode.querySelector('.unit_pricevalue').value * res;
+        if(Number(document.querySelector('.totalprice').innerHTML) >= 10000){
+            document.querySelector('.muryou').querySelector('.uline').innerHTML = '無料配送まで：到達しました';
+        }else{
+            document.querySelector('.muryou').querySelector('.uline').innerHTML = '無料配送まで：￥' + (10000 - document.querySelector('.totalprice').innerHTML).toLocaleString();
+        }
+        document.querySelector('.kakutokupoint').querySelector('.uline').innerHTML = '獲得ポイント：￥' + (document.querySelector('.totalprice').innerHTML * 0.02).toLocaleString();
     })
     .catch(error => {
         console.log(error); // エラー表示

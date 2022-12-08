@@ -44,6 +44,7 @@
                             $ClsCartSelect = new CartSelect();
                             $cartdatas = $ClsCartSelect->cartselectbyuserid($user->user_id);
                             $count = 0;
+                            $totalprice = 0;
                             foreach($cartdatas as $cartdata){
                                 
                         ?>
@@ -63,28 +64,37 @@
                                         <img src="svg/plus.svg" alt="" style="pointer-events: none;"/>
                                     </button>
                                 </div>
-                                <h1><i class="bi bi-currency-yen"></i><?php echo $cartdata['unit_price'];?></h1>
+                                <h1><i class="bi bi-currency-yen"></i><?php echo number_format($cartdata['unit_price']);?></h1>
                                 <form action="php/CartDelete.php" method="post">
                                     <input type="hidden" name="cart_id" value="<?php echo $cartdata['cart_id'];?>">
                                     <input type="submit" value="商品を削除する">
                                 </form>
                             </div>
+                            <!-- Order.html に送るフォームの内容 -->
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][cart_id]" value="<?php echo $cartdata['cart_id']?>">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_image]" value="<?php echo $cartdata['item_image']?>">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_name]" value="<?php echo $cartdata['item_name']?>">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][quantity]" value="<?php echo $cartdata['quantity']?>" class="quantityvalue">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][unit_price]" value="<?php echo $cartdata['unit_price']?>" class="unit_pricevalue">
+                            <!-- ----------------------------- -->
                         </div>
-                        <!-- Order.html に送るフォームの内容 -->
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][cart_id]" value="<?php echo $cartdata['cart_id']?>">
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_image]" value="<?php echo $cartdata['item_image']?>">
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_name]" value="<?php echo $cartdata['item_name']?>">
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][quantity]" value="<?php echo $cartdata['quantity']?>">
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][unit_price]" value="<?php echo $cartdata['unit_price']?>">
-                        <!-- ----------------------------- -->
                         <?php
                                 $count++;
+                                $totalprice += $cartdata['unit_price'] * $cartdata['quantity'];
                             }
                         ?>
                         <div>
                             <h2>商品の個数：<?php echo $count;?>点</h2>
-                            <h2>無料配送まで：</h2>
-                            <h2>獲得ポイント：</h2>
+                            <div class="totalprice" style="display:none;"><?php echo $totalprice?></div>
+                            <h2 class="muryou">無料配送まで：<?php
+                                                if(10000 - $totalprice >= 1){
+                                                    echo '￥'.number_format(10000 - $totalprice);
+                                                }else{
+                                                    echo  '到達しました';
+                                                }
+                                             ?>
+                            </h2>
+                            <h2 class="kakutokupoint">獲得ポイント：￥<?php echo number_format($totalprice * 0.02);?></h2>
                         </div>
 
                         
@@ -93,7 +103,7 @@
                     <!--/.list-container-->
 
                     <!-- Order.html に送るフォーム -->
-                    <form action="Order.php" id="OrderForm" method="post">
+                    <form action="Order.php" id="OrderForm" name="OrderForm" method="post">
                         <p class="btn mt30"><input type="submit" value="商品の注文手続きへ"class="ws"></p>
                     </form>
 

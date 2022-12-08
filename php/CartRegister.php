@@ -12,6 +12,6 @@
     $ps->bindValue(2,$order['item_id'],PDO::PARAM_INT);
     $ps->execute();
 
-    header('Location: ../cart.php',true, 307);
+    header('Location: ../Cart.php',true, 307);
     exit();
 ?>
