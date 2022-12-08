@@ -39,6 +39,7 @@
                     <h2><?php echo count($_POST['item']);?>点のご購入<i class="bi bi-basket2"></i></h2>
                     <div class="list-container">
                         <?php
+                            $totalprice = 0;
                             $count = 0;
                             foreach($_POST['item'] as $item){
 
@@ -48,31 +49,34 @@
                             <div class="text">
                                 <h4><?php echo $item['item_name'];?></h4>
                                 <h3>数量：<?php echo $item['quantity']?></h3>
-                                <h1><i class="bi bi-currency-yen"></i><?php echo $item['unit_price']?></h1>
+                                <h1><i class="bi bi-currency-yen"></i><?php echo number_format($item['unit_price']);?></h1>
                             </div>
                         </div>
                         <!-- OrderCreate.php に送るフォームの内容 -->
                         <input type="hidden" form="OrderHistoryForm" name="cart_id[<?php echo $count;?>]" value="<?php echo $item['cart_id'];?>">
                         <!-- ------------------------------------ -->
                         <?php
+                                $totalprice += $item['quantity'] * $item['unit_price'];
                                 $count++;
                             }
                         ?>
                         <div>
                             <h2>注文内容</h2>
-                            <h3>　小計：¥</h3>
-                            <h3>　配送料：¥</h3>
-                            <h3>　合計：¥</h3>
+                            <h3>　小計：¥<?php echo number_format($totalprice);?></h3>
+                            <h3>　配送料：¥500</h3>
+                            <h3>　合計：¥<?php echo number_format($shougoukei = $totalprice + 500)?></h3>
                             <h2>割引</h2>
-                            <h3>　配送料：－¥</h3>
-                            <h3>　セット割：－¥</h3>
-                            <h1 class="goukei">合計：¥</h1>
+                            <h3>　配送料：－¥<?php if($totalprice >= 10000){echo $haisou = 500;}else{echo $haisou = 0;}?></h3>
+                            <h3>　セット割：－<?php ?>¥</h3>
+                            <h1 class="goukei">合計：¥<?php echo number_format($daikei = $shougoukei - $haisou);?></h1>
                         </div>
 
                     </div>
                     <!--/.list-container-->
                     <div class="button004">
                         <form action="php/OrderCreate.php" id="OrderHistoryForm" method="post">
+                            <input type="hidden" name="totalprice" value="<?php echo $daikei?>">
+                            <input type="hidden" name="point" value="<?php echo $totalprice * 0.02;?>">
                             <input type="submit" value="注文確定">
                         </form>
                     </div>

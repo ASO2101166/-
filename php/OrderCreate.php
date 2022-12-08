@@ -5,20 +5,17 @@
     require_once 'UserInfo.php';
     require_once 'Dbconnect.php';
     require_once 'CartSelect.php';
+    require_once 'PointGain.php';
     $user = unserialize($_SESSION['user']);
 
     $cls = new Dbconnect();
     $pdo = $cls->dbConnect();
 
     $sql = "INSERT INTO orders(user_id, total_price, order_date) VALUES 
-                              (?, (SELECT SUM(c.quantity * i.unit_price) AS total_price
-                                   FROM carts AS c LEFT OUTER JOIN items AS i
-                                   ON c.item_id = i.item_id
-                                   WHERE c.cart_id IN (".implode(',', $_POST['cart_id']).")
-                                   ),
-                                now());";
+                              (?, ?, now());";
     $ps = $pdo->prepare($sql);
     $ps->bindValue(1,$user->user_id,PDO::PARAM_INT);
+    $ps->bindValue(2,$_POST['totalprice'],PDO::PARAM_INT);
     $ps->execute();
 
     $sql2 = "INSERT INTO orderdetails(order_id, order_detail_id, item_id, quantity, estimated_delivery_date) VALUES
@@ -46,6 +43,7 @@
         $pdo->query($sql4);
     }
 
+    PointGain::userpointgain($_POST['point'],$user->user_id);
 
     header('Location: ../OrderHistory.php',true, 307);
     exit();
