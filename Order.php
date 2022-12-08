@@ -41,8 +41,13 @@
                         <?php
                             $totalprice = 0;
                             $count = 0;
+                            $set = FALSE;
                             foreach($_POST['item'] as $item){
-
+                                for($i = 0; $i < count($_POST['item']); $i++){
+                                    if($i != $count && $_POST['item'][$i]['set_discount_division'] == $item['set_discount_division']){
+                                        $set = TRUE;
+                                    }
+                                }
                         ?>
                         <div class="list blur">
                             <figure><img src="images/<?php echo $item['item_image'];?>" alt=""></figure>
@@ -67,8 +72,8 @@
                             <h3>　合計：¥<?php echo number_format($shougoukei = $totalprice + 500)?></h3>
                             <h2>割引</h2>
                             <h3>　配送料：－¥<?php if($totalprice >= 10000){echo $haisou = 500;}else{echo $haisou = 0;}?></h3>
-                            <h3>　セット割：－<?php ?>¥</h3>
-                            <h1 class="goukei">合計：¥<?php echo number_format($daikei = $shougoukei - $haisou);?></h1>
+                            <h3>　セット割：－¥<?php if($set == TRUE){echo number_format($setwari = $totalprice * 0.1);}else{echo $setwari = 0;}?></h3>
+                            <h1 class="goukei">合計：¥<?php echo number_format($daikei = $shougoukei - $haisou - $setwari);?></h1>
                         </div>
 
                     </div>

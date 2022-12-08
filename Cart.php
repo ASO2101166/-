@@ -76,6 +76,7 @@
                             <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_name]" value="<?php echo $cartdata['item_name']?>">
                             <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][quantity]" value="<?php echo $cartdata['quantity']?>" class="quantityvalue">
                             <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][unit_price]" value="<?php echo $cartdata['unit_price']?>" class="unit_pricevalue">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][set_discount_division]" value="<?php echo $cartdata['set_discount_division']?>">
                             <!-- ----------------------------- -->
                         </div>
                         <?php
