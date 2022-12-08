@@ -3,7 +3,6 @@
         session_start();
     }
     require_once 'Dbconnect.php';
-    require_once 'ItemInfo.php';
     class ItemSelect{
         function itemselect(){
             $cls = new Dbconnect();
