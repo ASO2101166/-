@@ -24,10 +24,14 @@ $(function() {
   
     var accordion = new Accordion($('#accordion'), false);
   });
-
-function mottomiru(item_id){
-  const data = item_id;
-  fetch('php/ItemSelect.php', {
+let count = 9;
+function mottomiru(genre_code){
+  count += 9;
+  const data = {
+    genre_code: genre_code,
+    count: count
+  }
+  fetch('php/ItemSelectAjax.php', {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -40,7 +44,7 @@ function mottomiru(item_id){
   })
   .then(res => {
       console.log(res); // やりたい処理
-      
+      document.querySelector('.list-container').innerHTML = res;
   })
   .catch(error => {
       console.log(error); // エラー表示

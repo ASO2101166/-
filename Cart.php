@@ -70,7 +70,7 @@
                                     <input type="submit" value="商品を削除する">
                                 </form>
                             </div>
-                            <!-- Order.html に送るフォームの内容 -->
+                            <!-- Order.php に送るフォームの内容 -->
                             <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][cart_id]" value="<?php echo $cartdata['cart_id']?>">
                             <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_image]" value="<?php echo $cartdata['item_image']?>">
                             <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_name]" value="<?php echo $cartdata['item_name']?>">
@@ -103,7 +103,7 @@
                     </div>
                     <!--/.list-container-->
 
-                    <!-- Order.html に送るフォーム -->
+                    <!-- Order.php に送るフォーム -->
                     <form action="Order.php" id="OrderForm" name="OrderForm" method="post">
                         <p class="btn mt30"><input type="submit" value="商品の注文手続きへ"class="ws"></p>
                     </form>
