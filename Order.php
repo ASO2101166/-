@@ -78,13 +78,11 @@
 
                     </div>
                     <!--/.list-container-->
-                    <div class="button004">
-                        <form action="php/OrderCreate.php" id="OrderHistoryForm" method="post">
-                            <input type="hidden" name="totalprice" value="<?php echo $daikei?>">
-                            <input type="hidden" name="point" value="<?php echo $totalprice * 0.02;?>">
-                            <input type="submit" value="注文確定">
-                        </form>
-                    </div>
+                    <form action="php/OrderCreate.php" id="OrderHistoryForm" method="post">
+                        <input type="hidden" name="totalprice" value="<?php echo $daikei?>">
+                        <input type="hidden" name="point" value="<?php echo $totalprice * 0.02;?>">
+                        <input type="submit" value="注文確定" class="button004">
+                    </form>
                     <div class="button005">
                         <a href="Cart.php">戻る</a>
                     </div>
