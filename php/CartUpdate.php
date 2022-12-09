@@ -27,7 +27,7 @@
     }else{
         $cls = new Dbconnect();
         $pdo = $cls->dbConnect();
-        $sql = "UPDATE carts SET quantity = quantity - 1 WHERE cart_id = ?";
+        $sql = "UPDATE carts SET quantity = quantity - 1 WHERE cart_id = ? AND quantity > 1";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1,$data['cart_id'],PDO::PARAM_STR);
         $ps->execute();
