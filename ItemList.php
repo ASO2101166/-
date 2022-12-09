@@ -131,8 +131,8 @@
             ?>
           </div>
           <!--/.list-container-->
-
-          <p class="btn mt30"><button class="ws" type="button" name="button" onclick="mottomiru(<?php $row['item_id']?>)">もっとみる<i class="bi bi-hand-index"></i></button></p>
+          <div class="itemcount" style="display:none;"><?php ?></div>
+          <p class="btn mt30"><button class="ws" type="button" name="button" onclick="mottomiru('<?php if(isset($_POST['genre_code'])){echo $_POST['genre_code'];}else{echo 'no';}?>')">もっとみる<i class="bi bi-hand-index"></i></button></p>
 
         </section>
 
