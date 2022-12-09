@@ -1,9 +1,12 @@
 <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once 'Dbconnect.php';
     require_once 'UserInfo.php';
     class CartSelect{
 
-        function cartselect($user_id){
+        function cartselectbyuserid($user_id){
             $cls = new Dbconnect();
             $pdo = $cls->dbConnect();
             $sql = "SELECT * FROM carts AS c LEFT OUTER JOIN items AS i 

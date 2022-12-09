@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="css/style.css">
 
   <?php
+    if(!isset($_SESSION)){
+      session_start();
+    }
     require_once 'php/ItemSetSelect.php';
   ?>
 </head>
@@ -19,7 +22,7 @@
 
     <!-- ヘッダー部分 -->
     <header>
-      <?php include('template/Header.html');?>
+      <?php include('template/Header.php');?>
     </header>
 
     <main>
@@ -30,11 +33,11 @@
           $ClsItemSetSelect = new ItemSetSelect();
           $itemsetData = $ClsItemSetSelect->itemsetselect($item['set_discount_division'], $item['item_id']);
         ?>
-        <h2><?php echo $item['item_name']?></h2>
-        <h1><i class="bi bi-currency-yen"></i><?php echo $item['unit_price']?></h1>
+        <h2><?php echo $item['item_name'];?></h2>
+        <h1><i class="bi bi-currency-yen"></i><?php echo number_format($item['unit_price']);?></h1>
 
-        <p><img src="images/<?php echo $item['item_image']?>" alt=""></p>
-        <h4><?php echo $item['explanation']?></h4>
+        <p><img src="images/<?php echo $item['item_image'];?>" alt=""></p>
+        <h4><?php echo $item['explanation'];?></h4>
         <?php
           if(!empty($itemsetData)){
 
@@ -46,10 +49,10 @@
             <figure><img src="images/<?php echo $item['item_image']?>" alt=""></figure>
             <div class="text">
               <h4><?php echo $item['item_name']?></h4>
-              <h4><i class="bi bi-currency-yen"></i><?php echo $item['unit_price']?></h4>
+              <h4><i class="bi bi-currency-yen"></i><?php echo number_format($item['unit_price']);?></h4>
             </div>
             <form action="php/CartCreate.php" method="post">
-              <input type="hidden" name="item_id" value="<?php echo $item['item_id']?>">
+              <input type="hidden" name="item_id" value="<?php echo $item['item_id'];?>">
               <p class="btn"><input type="submit" value="カートに入れる"></p>
             </form>
             <span class="new">人気！</span>
@@ -67,10 +70,10 @@
             <figure><img src="images/<?php echo $itemset['item_image'];?>" alt=""></figure>
             <div class="text">
               <h4><?php echo $itemset['item_name'];?></h4>
-              <h4><i class="bi bi-currency-yen"></i><?php echo $itemset['unit_price'];?></h4>
+              <h4><i class="bi bi-currency-yen"></i><?php echo number_format($itemset['unit_price']);?></h4>
             </div>
             <form action="php/CartCreate.php" method="post">
-              <input type="hidden" name="item_id" value="<?php echo $itemset['item_id']?>">
+              <input type="hidden" name="item_id" value="<?php echo $itemset['item_id'];?>">
               <p class="btn"><input type="submit" value="カートに入れる"></p>
             </form>
           </div>
@@ -93,7 +96,7 @@
 
     <!-- フッター部分 -->
     <footer>
-      <?php include('template/Footer.html');?>
+      <?php include('template/Footer.php');?>
     </footer>
 
     <!--ページの上部へ戻るボタン-->

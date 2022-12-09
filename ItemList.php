@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="css/genre.css">
 
   <?php
+    if(!isset($_SESSION)){
+      session_start();
+    }
     require_once 'php/ItemSelect.php';
     require_once 'php/GenreSelect.php';
     
@@ -24,7 +27,7 @@
 
     <!-- ヘッダー部分 -->
     <header>
-    <?php include('template/Header.html');?>
+    <?php include('template/Header.php');?>
     <h1 id="logo"><a href="ItemList.html" class="menu"></a>
           <!-- ハンバーガーメニュー部分 -->
         <div class="nav">  
@@ -47,7 +50,7 @@
                     $genrelevel2 = $ClsGenreSelect->genreselectlevel2($genre1['genre_code']);
                     foreach($genrelevel2 as $genre2){
                   ?>
-                  <form action="ItemList.html" method="post">
+                  <form action="ItemList.php" method="post">
                     <input type="hidden" name="genre_code" value="<?php echo $genre2['genre_code']?>">
                     <li><input type="submit" value="<?php echo $genre2['genre_name']?>"/></li>
                   </form>
@@ -110,7 +113,7 @@
                 <p class="btn"><input type="submit" value="カートに入れる"></p>
               </form>
               <!-- <p class="btn"><a href="Cart.html">カートに入れる</a></p> -->
-              <form action="ItemDetail.html" method="post">
+              <form action="ItemDetail.php" method="post">
                 <p class="btn"><input type="submit" value="詳しく見る"></p>
                 <input type="hidden" name="item[item_id]" value="<?php echo $row['item_id']?>">
                 <input type="hidden" name="item[item_name]" value="<?php echo $row['item_name']?>">
@@ -128,8 +131,8 @@
             ?>
           </div>
           <!--/.list-container-->
-
-          <p class="btn mt30"><a href="ItemList.html" class="ws">もっとみる<i class="bi bi-hand-index"></i></a></p>
+          <div class="itemcount" style="display:none;"><?php ?></div>
+          <p class="btn mt30"><button class="ws" type="button" name="button" onclick="mottomiru('<?php if(isset($_POST['genre_code'])){echo $_POST['genre_code'];}else{echo 'no';}?>')">もっとみる<i class="bi bi-hand-index"></i></button></p>
 
         </section>
 
@@ -143,7 +146,7 @@
 
     <!-- フッター部分 -->
     <footer>
-      <?php include('template/Footer.html');?>
+      <?php include('template/Footer.php');?>
     </footer>
 
     <!--ページの上部へ戻るボタン-->

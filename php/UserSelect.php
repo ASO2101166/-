@@ -1,8 +1,11 @@
 <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once 'Dbconnect.php';
     require_once 'UserInfo.php';
     class UserSelect{
-        function userselect($mail, $pass){
+        function userselectbymailpass($mail, $pass){
             $cls = new Dbconnect();
             $pdo = $cls->dbConnect();
             $sql = "SELECT * FROM users WHERE mail_address = ?;";

@@ -1,19 +1,22 @@
 <?php
-    session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once 'SessionCheck.php';
     require_once 'UserSelect.php';
 
     $ClsSessionCheck = new SessionCheck();
     $ClsUserSelect = new UserSelect();
-    if($ClsSessionCheck->sessioncheck() == true){
-        header('Location: ../ItemList.html');
+    if($ClsSessionCheck->usersessioncheck() == true){
+        header('Location: ../ItemList.php',true, 307);
         exit();
     }else{
-        if($ClsUserSelect->userselect($_POST['mail'], $_POST['password'])){
-            header('Location: ../ItemList.html');
+        if($ClsUserSelect->userselectbymailpass($_POST['mail'], $_POST['password'])){
+            header('Location: ../ItemList.php',true, 307);
             exit();
         }else{
-            echo header('Location: ../Login.html?error');
+            header('Location: ../Login.php?error',true, 307);
+            exit();
         }
     }
 ?>

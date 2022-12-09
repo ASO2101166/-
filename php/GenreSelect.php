@@ -1,4 +1,7 @@
 <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once 'Dbconnect.php';
     class GenreSelect{
         function genreselectlevel1(){

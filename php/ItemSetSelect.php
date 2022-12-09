@@ -1,4 +1,7 @@
 <?php
+    if(!isset($_SESSION)){
+        session_start();
+    }
     require_once 'Dbconnect.php';
     class ItemSetSelect{
         function itemsetselect($setdiscountdivision, $item_id){

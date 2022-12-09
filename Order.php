@@ -17,9 +17,16 @@
 
         <header>
             <?php 
-                include('template/Header.html');
-                if($sessioncheck == false){
-                    header('Location: Login.html');
+                if(!isset($_SESSION)){
+                    session_start();
+                }
+                include('template/Header.php');
+                if($isLogin == false){
+                    header('Location: Login.php');
+                    exit();
+                }
+                if(!isset($_POST['item'])){
+                    header('Location: Cart.php');
                     exit();
                 }
             ?>
@@ -32,34 +39,41 @@
                     <h2><?php echo count($_POST['item']);?>点のご購入<i class="bi bi-basket2"></i></h2>
                     <div class="list-container">
                         <?php
+                            $totalprice = 0;
                             $count = 0;
+                            $set = FALSE;
                             foreach($_POST['item'] as $item){
-
+                                for($i = 0; $i < count($_POST['item']); $i++){
+                                    if($i != $count && $_POST['item'][$i]['set_discount_division'] == $item['set_discount_division']){
+                                        $set = TRUE;
+                                    }
+                                }
                         ?>
                         <div class="list blur">
                             <figure><img src="images/<?php echo $item['item_image'];?>" alt=""></figure>
                             <div class="text">
                                 <h4><?php echo $item['item_name'];?></h4>
                                 <h3>数量：<?php echo $item['quantity']?></h3>
-                                <h1><i class="bi bi-currency-yen"></i><?php echo $item['unit_price']?></h1>
+                                <h1><i class="bi bi-currency-yen"></i><?php echo number_format($item['unit_price']);?></h1>
                             </div>
                         </div>
                         <!-- OrderCreate.php に送るフォームの内容 -->
                         <input type="hidden" form="OrderHistoryForm" name="cart_id[<?php echo $count;?>]" value="<?php echo $item['cart_id'];?>">
                         <!-- ------------------------------------ -->
                         <?php
+                                $totalprice += $item['quantity'] * $item['unit_price'];
                                 $count++;
                             }
                         ?>
                         <div>
                             <h2>注文内容</h2>
-                            <h3>　小計：¥</h3>
-                            <h3>　配送料：¥</h3>
-                            <h3>　合計：¥</h3>
+                            <h3>　小計：¥<?php echo number_format($totalprice);?></h3>
+                            <h3>　配送料：¥500</h3>
+                            <h3>　合計：¥<?php echo number_format($shougoukei = $totalprice + 500)?></h3>
                             <h2>割引</h2>
-                            <h3>　配送料：－¥</h3>
-                            <h3>　セット割：－¥</h3>
-                            <h1 class="goukei">合計：¥</h1>
+                            <h3>　配送料：<?php if($totalprice >= 10000){echo $haisou = 500;}else{echo $haisou = 0;}?></h3>
+                            <h3>　セット割：<?php if($set == TRUE){echo number_format($setwari = $totalprice * 0.1);}else{echo $setwari = 0;}?></h3>
+                            <h1 class="goukei">合計：¥<?php echo number_format($daikei = $shougoukei - $haisou - $setwari);?></h1>
                         </div>
 
                     </div>
@@ -68,7 +82,7 @@
                         <input type="submit" value="注文確定" class="button004">
                     </form>
                     <div class="button005">
-                        <a href="Cart.html">戻る</a>
+                        <a href="Cart.php">戻る</a>
                     </div>
 
                 </section>
@@ -82,7 +96,7 @@
 
         <!-- フッター部分 -->
         <footer>
-            <?php include('template/Footer.html');?>
+            <?php include('template/Footer.php');?>
         </footer>
 
         <!--ページの上部へ戻るボタン-->

@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="css/style.css">
 
     <?php
+        if(!isset($_SESSION)){
+            session_start();
+        }
+        
         require_once 'php/CartSelect.php';
     ?>
 </head>
@@ -22,9 +26,9 @@
         <!-- ヘッダー部分 -->
         <header>
             <?php 
-                include('template/Header.html');
-                if($sessioncheck == false){
-                    header('Location: Login.html');
+                include('template/Header.php');
+                if($isLogin == false){
+                    header('Location: Login.php');
                     exit();
                 }
             ?>
@@ -38,8 +42,9 @@
                     <div class="list-container">
                         <?php
                             $ClsCartSelect = new CartSelect();
-                            $cartdatas = $ClsCartSelect->cartselect($user->user_id);
+                            $cartdatas = $ClsCartSelect->cartselectbyuserid($user->user_id);
                             $count = 0;
+                            $totalprice = 0;
                             foreach($cartdatas as $cartdata){
                                 
                         ?>
@@ -59,28 +64,38 @@
                                         <img src="svg/plus.svg" alt="" style="pointer-events: none;"/>
                                     </button>
                                 </div>
-                                <h1><i class="bi bi-currency-yen"></i><?php echo $cartdata['unit_price'];?></h1>
+                                <h1><i class="bi bi-currency-yen"></i><?php echo number_format($cartdata['unit_price']);?></h1>
                                 <form action="php/CartDelete.php" method="post">
                                     <input type="hidden" name="cart_id" value="<?php echo $cartdata['cart_id'];?>">
                                     <input type="submit" value="商品を削除する">
                                 </form>
                             </div>
+                            <!-- Order.php に送るフォームの内容 -->
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][cart_id]" value="<?php echo $cartdata['cart_id']?>">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_image]" value="<?php echo $cartdata['item_image']?>">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_name]" value="<?php echo $cartdata['item_name']?>">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][quantity]" value="<?php echo $cartdata['quantity']?>" class="quantityvalue">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][unit_price]" value="<?php echo $cartdata['unit_price']?>" class="unit_pricevalue">
+                            <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][set_discount_division]" value="<?php echo $cartdata['set_discount_division']?>">
+                            <!-- ----------------------------- -->
                         </div>
-                        <!-- Order.html に送るフォームの内容 -->
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][cart_id]" value="<?php echo $cartdata['cart_id']?>">
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_image]" value="<?php echo $cartdata['item_image']?>">
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][item_name]" value="<?php echo $cartdata['item_name']?>">
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][quantity]" value="<?php echo $cartdata['quantity']?>">
-                        <input type="hidden" form="OrderForm" name="item[<?php echo $count?>][unit_price]" value="<?php echo $cartdata['unit_price']?>">
-                        <!-- ----------------------------- -->
                         <?php
                                 $count++;
+                                $totalprice += $cartdata['unit_price'] * $cartdata['quantity'];
                             }
                         ?>
                         <div>
                             <h2>商品の個数：<?php echo $count;?>点</h2>
-                            <h2>無料配送まで：</h2>
-                            <h2>獲得ポイント：</h2>
+                            <div class="totalprice" style="display:none;"><?php echo $totalprice?></div>
+                            <h2 class="muryou">無料配送まで：<?php
+                                                if(10000 - $totalprice >= 1){
+                                                    echo '￥'.number_format(10000 - $totalprice);
+                                                }else{
+                                                    echo  '到達しました';
+                                                }
+                                             ?>
+                            </h2>
+                            <h2 class="kakutokupoint">獲得ポイント：<?php echo number_format($totalprice * 0.02);?></h2>
                         </div>
 
                         
@@ -88,8 +103,8 @@
                     </div>
                     <!--/.list-container-->
 
-                    <!-- Order.html に送るフォーム -->
-                    <form action="Order.html" id="OrderForm" method="post">
+                    <!-- Order.php に送るフォーム -->
+                    <form action="Order.php" id="OrderForm" name="OrderForm" method="post">
                         <p class="btn mt30"><input type="submit" value="商品の注文手続きへ"class="ws"></p>
                     </form>
 
@@ -108,7 +123,7 @@
         </main>
         <!-- フッター部分 -->
         <footer>
-                <?php include('template/Footer.html');?>
+                <?php include('template/Footer.php');?>
         </footer>
 
         <!--ページの上部へ戻るボタン-->

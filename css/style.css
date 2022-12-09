@@ -522,7 +522,8 @@ p.btn {margin: 0;}
 
 /*ボタン*/
 .btn a,
-.btn input {
+.btn input,
+.btn button {
 	display: inline-block;text-decoration: none;border: none;
 	font-size: 1em;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.2);	/*ボックスの影。右へ、下へ、ぼかし幅の順。0,0,0は黒の事で0.2は色が20%出た状態。*/
@@ -536,7 +537,8 @@ p.btn {margin: 0;}
 
 /*ボタンのマウスオン時*/
 .btn a:hover,
-.btn input:hover {
+.btn input:hover,
+.btn button:hover {
 	cursor: pointer;		/*inputタグを使う場合に「手」のマークになるように。リンクと同じ表示になるようにという事です。*/
 	opacity: 0.8;			/*冒頭のリンクテキストのhoverと合わせました*/
 	transform: scale(1.02);	/*実寸の102%に拡大*/
