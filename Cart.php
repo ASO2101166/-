@@ -109,7 +109,8 @@
                     </form>
 
                 </section>
-
+                
+                <p class="c"><a href="javascript:history.back()">&lt;&lt; 前のページに戻る</a></p>
             </div>
 
             <section>
