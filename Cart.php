@@ -95,7 +95,7 @@
                                                 }
                                              ?>
                             </h2>
-                            <h2 class="kakutokupoint">獲得ポイント：￥<?php echo number_format($totalprice * 0.02);?></h2>
+                            <h2 class="kakutokupoint">獲得ポイント：<?php echo number_format($totalprice * 0.02);?></h2>
                         </div>
 
                         
