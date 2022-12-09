@@ -124,7 +124,6 @@
                 <input type="hidden" name="item[set_discount_division]" value="<?php echo $row['set_discount_division']?>">
               </form>
               <!-- <p class="btn"><a href="ItemDetail.html">詳しくみる</a></p> -->
-              <span class="new">NEW</span>
             </div>
             <?php
               }
