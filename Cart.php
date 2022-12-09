@@ -52,7 +52,7 @@
                             <figure><img src="images/<?php echo $cartdata['item_image'];?>" alt=""></figure>
                             <div class="text">
                                 <h4><?php echo $cartdata['item_name'];?></h4>
-                                <p>配送予定日：</p>
+                                <p>配送予定日：<?php echo date("Y-m-d",strtotime("7 day"));?></p>
                                 <div class="quantity">
                                     <button class="minus-btn" type="button" name="button" 
                                             onclick="genshou(event,<?php echo $cartdata['cart_id'];?>,'hiki')">
