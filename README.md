@@ -8,11 +8,11 @@
 
 # メンバー
 
-木原 大翔（PHP）
-市耒 彩羽（HTML・CSS・JavaScript）
-志水 凜（データベース・PHP）
-林 美月（データベース）
-齋藤 凱（HTML・CSS）
+木原 大翔（PHP）  
+市耒 彩羽（HTML・CSS・JavaScript）  
+志水 凜（データベース・PHP）  
+林 美月（データベース）  
+齋藤 凱（HTML・CSS）  
 
 # WebサイトURL
 
