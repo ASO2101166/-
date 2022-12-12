@@ -25,7 +25,8 @@ $(function() {
     var accordion = new Accordion($('#accordion'), false);
   });
 let count = 9;
-function mottomiru(genre_code){
+function mottomiru(e,genre_code){
+  e.target.disabled = true;
   count += 9;
   const data = {
     genre_code: genre_code,
@@ -43,11 +44,11 @@ function mottomiru(genre_code){
       return response.json()
   })
   .then(res => {
-      console.log(res); // やりたい処理
+      // やりたい処理
       document.querySelector('.list-container').innerHTML = res;
+      e.target.disabled = false;
   })
   .catch(error => {
       console.log(error); // エラー表示
   });
-  console.log(JSON.stringify(data));
 }
