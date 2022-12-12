@@ -132,7 +132,20 @@
           </div>
           <!--/.list-container-->
           <div class="itemcount" style="display:none;"><?php ?></div>
-          <p class="btn mt30"><button class="ws" type="button" name="button" onclick="mottomiru(event,'<?php if(isset($_POST['genre_code'])){echo $_POST['genre_code'];}else{echo 'no';}?>')">もっとみる<i class="bi bi-hand-index"></i></button></p>
+          <?php 
+            if(isset($_POST['genre_code'])){
+              $limitData = $ClsItemSelect->itemselectlimitBygenre($_POST['genre_code']);
+            }else{
+              $limitData = $ClsItemSelect->itemselectlimit();
+            }
+            foreach($limitData as $limit){
+              if($limit['CHECK'] == false){
+          ?>
+            <p class="btn mt30"><button class="ws" type="button" name="button" onclick="mottomiru(event,'<?php if(isset($_POST['genre_code'])){echo $_POST['genre_code'];}else{echo 'no';}?>')">もっとみる<i class="bi bi-hand-index"></i></button></p>
+          <?php 
+              }
+            }
+          ?>
 
         </section>
 
