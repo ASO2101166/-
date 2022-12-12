@@ -27,7 +27,7 @@
                     <p v-if="isInValidEmail" class="error">正しいメールアドレスの形式で入れてください</p>
                     <input class="form" type="password" v-model="password" name="password" placeholder="password">
                     <p v-if="isInValidPassword" class="error">パスワードは8桁以上の英数字で入れてください</p>
-                    <input id="btn" type="submit" value="ログイン">
+                    <input class="form" type="submit" value="ログイン">
                 </form>
             </div>
         </div>
