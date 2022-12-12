@@ -36,6 +36,43 @@
                             <span class="new">NEW</span>
                         </div>';
         }
+        $sql = "
+                WITH
+
+                Btbl AS
+                (SELECT COUNT(*) AS bcnt
+                FROM items
+                WHERE genre_code = ?
+                ),
+                lmttbl AS
+                (SELECT *
+                FROM items
+                WHERE genre_code = ?
+                LIMIT ?
+                ),
+                tbl AS
+                (SELECT COUNT(*) AS cnt
+                FROM lmttbl
+                )
+                SELECT CASE
+                            WHEN Btbl.bcnt = tbl.cnt THEN true
+                            ELSE false
+                    END AS 'CHECK'
+                FROM Btbl,tbl;
+                ";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$data['genre_code'],PDO::PARAM_STR);
+        $ps->bindValue(2,$data['genre_code'],PDO::PARAM_STR);
+        $ps->bindValue(3,$data['count'],PDO::PARAM_INT);
+        $ps->execute();
+        $itemData = $ps->fetchAll();
+        foreach($itemData as $item){
+            if($item['CHECK'] == true){
+                $res = $res.'OK';
+            }else{
+                $res = $res.'NG';
+            }
+        }
         echo json_encode($res);
     }else{
         $cls = new Dbconnect();
@@ -69,6 +106,39 @@
                             </form>
                             <span class="new">NEW</span>
                         </div>';
+        }
+        $sql = "
+                WITH
+
+                Btbl AS
+                (SELECT COUNT(*) AS bcnt
+                FROM items
+                ),
+                lmttbl AS
+                (SELECT *
+                FROM items
+                LIMIT ?
+                ),
+                tbl AS
+                (SELECT COUNT(*) AS cnt
+                FROM lmttbl
+                )
+                SELECT CASE
+                            WHEN Btbl.bcnt = tbl.cnt THEN true
+                            ELSE false
+                    END AS 'CHECK'
+                FROM Btbl,tbl;
+                ";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$data['count'],PDO::PARAM_INT);
+        $ps->execute();
+        $itemData = $ps->fetchAll();
+        foreach($itemData as $item){
+            if($item['CHECK'] == true){
+                $res = $res.'OK';
+            }else{
+                $res = $res.'NG';
+            }
         }
         echo json_encode($res);
     }

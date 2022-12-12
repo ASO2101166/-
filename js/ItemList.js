@@ -45,7 +45,13 @@ function mottomiru(e,genre_code){
   })
   .then(res => {
       // やりたい処理
+      let check = res.slice(-2); 
+      res = res.slice( 0, -2 );
       document.querySelector('.list-container').innerHTML = res;
+      console.log(check);
+      if(check == 'OK'){
+        e.target.style.display = "none";
+      }
       e.target.disabled = false;
   })
   .catch(error => {
