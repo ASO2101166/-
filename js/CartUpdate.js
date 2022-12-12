@@ -1,5 +1,6 @@
 function genshou(e,cart_id,hiki){
     if(e.target.parentNode.querySelector('.cartkosuu').innerHTML > 1){
+        e.target.disabled = true;
         document.querySelector('.totalprice').innerHTML = document.querySelector('.totalprice').innerHTML - e.target.parentNode.parentNode.parentNode.querySelector('.unit_pricevalue').value * e.target.parentNode.parentNode.parentNode.querySelector('.quantityvalue').value;
         const data = {
             kosuu: e.target.parentNode.querySelector('.cartkosuu').innerHTML,
@@ -18,7 +19,7 @@ function genshou(e,cart_id,hiki){
             return response.json()
         })
         .then(res => {
-            console.log(res); // やりたい処理
+            // やりたい処理
             e.target.parentNode.querySelector('.cartkosuu').innerHTML = res;
             e.target.parentNode.parentNode.parentNode.querySelector('.quantityvalue').value = res;
             document.querySelector('.totalprice').innerHTML = Number(document.querySelector('.totalprice').innerHTML) + e.target.parentNode.parentNode.parentNode.querySelector('.unit_pricevalue').value * res;
@@ -28,15 +29,16 @@ function genshou(e,cart_id,hiki){
                 document.querySelector('.muryou').querySelector('.uline').innerHTML = '無料配送まで：￥' + (10000 - document.querySelector('.totalprice').innerHTML).toLocaleString();;
             }
             document.querySelector('.kakutokupoint').querySelector('.uline').innerHTML = '獲得ポイント：￥' + (document.querySelector('.totalprice').innerHTML * 0.02).toLocaleString();
+            e.target.disabled = false;
         })
         .catch(error => {
             console.log(error); // エラー表示
         });
-        console.log(JSON.stringify(data));
     }
 }
 
 function zouka(e,cart_id,tasi){
+    e.target.disabled = true;
     document.querySelector('.totalprice').innerHTML = document.querySelector('.totalprice').innerHTML - e.target.parentNode.parentNode.parentNode.querySelector('.unit_pricevalue').value * e.target.parentNode.parentNode.parentNode.querySelector('.quantityvalue').value;
     const data = {
         kosuu: e.target.parentNode.querySelector('.cartkosuu').innerHTML,
@@ -55,7 +57,7 @@ function zouka(e,cart_id,tasi){
         return response.json()
     })
     .then(res => {
-        console.log(res); // やりたい処理
+        // やりたい処理
         e.target.parentNode.querySelector('.cartkosuu').innerHTML = res;
         e.target.parentNode.parentNode.parentNode.querySelector('.quantityvalue').value = res;
         document.querySelector('.totalprice').innerHTML = Number(document.querySelector('.totalprice').innerHTML) + e.target.parentNode.parentNode.parentNode.querySelector('.unit_pricevalue').value * res;
@@ -65,9 +67,9 @@ function zouka(e,cart_id,tasi){
             document.querySelector('.muryou').querySelector('.uline').innerHTML = '無料配送まで：￥' + (10000 - document.querySelector('.totalprice').innerHTML).toLocaleString();
         }
         document.querySelector('.kakutokupoint').querySelector('.uline').innerHTML = '獲得ポイント：￥' + (document.querySelector('.totalprice').innerHTML * 0.02).toLocaleString();
+        e.target.disabled = false;
     })
     .catch(error => {
         console.log(error); // エラー表示
     });
-    console.log(JSON.stringify(data));
 }
